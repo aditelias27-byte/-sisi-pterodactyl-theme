@@ -1,0 +1,2448 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+<!-- =========================================================
+     VITBRO HOSTING - Hosting Server Minecraft Indonesia
+     Single file: HTML + Tailwind CSS (CDN) + JavaScript vanilla
+     Semua data bisa diedit di const CONFIG (lihat bagian <script> paling bawah)
+     ========================================================= -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===================== SEO ===================== -->
+<title>VITBRO HOSTING - Hosting Minecraft Indonesia Anti Lag, Aktif 60 Detik, Uptime 99.9%</title>
+<meta name="description" content="VITBRO HOSTING: hosting server Minecraft Indonesia anti lag. Panel Pterodactyl, lokasi Singapore & Jakarta, Java + Bedrock crossplay, Anti DDoS 1.2 Tbps, aktif dalam 60 detik, garansi uptime 99.9%. Mulai Rp 20.000/bulan.">
+<meta name="keywords" content="hosting minecraft indonesia, server minecraft murah, hosting minecraft anti lag, pterodactyl, hosting minecraft bedrock, vitbro hosting">
+<meta name="author" content="VITBRO HOSTING">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#07070F">
+<link rel="canonical" href="http://vitbrohosting.id">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VITBRO HOSTING">
+<meta property="og:title" content="VITBRO HOSTING - Server Minecraft Anti Lag, Aktif 60 Detik">
+<meta property="og:description" content="Hosting Minecraft Indonesia. Panel Pterodactyl, Anti DDoS 1.2 Tbps, Singapore & Jakarta, Java + Bedrock. Mulai Rp 20.000/bulan.">
+<meta property="og:url" content="http://vitbrohosting.id">
+<meta property="og:locale" content="id_ID">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VITBRO HOSTING - Hosting Minecraft Indonesia">
+<meta name="twitter:description" content="Server Minecraft anti lag, aktif 60 detik, garansi uptime 99.9%.">
+
+<!-- Favicon: huruf V ungu (SVG inline) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237C3AED'/%3E%3Cstop offset='1' stop-color='%232563EB'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M16 16h9l7 21 7-21h9L37 48h-10z' fill='%23fff'/%3E%3C/svg%3E">
+
+<!-- ===================== FONTS ===================== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ===================== TAILWIND CSS (CDN) ===================== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Design system VITBRO
+  window.tailwind = window.tailwind || {};
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg: '#07070F',      // Background
+          card: '#12121F',    // Card
+          line: '#2A2A3F',    // Border
+          brand: '#7C3AED',   // Ungu utama
+          brand2: '#A78BFA',  // Ungu muda
+          blue2: '#2563EB',   // Biru
+          on: '#22C55E',      // Hijau online
+          off: '#EF4444',     // Merah offline
+          mt: '#FACC15',      // Kuning maintenance
+          lime2: '#A3E635',   // Lime aksen
+          mute: '#A1A1AA',    // Text abu
+          dim: '#71717A'      // Text abu gelap
+        },
+        fontFamily: {
+          head: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace']
+        }
+      }
+    }
+  };
+</script>
+
+<!-- ===================== CUSTOM CSS ===================== -->
+<style>
+  html, body { background: #07070F; color: #FFFFFF; font-family: Inter, sans-serif; }
+  h1, h2, h3, h4, .font-head { font-family: 'Space Grotesk', sans-serif; }
+  ::selection { background: #7C3AED; color: #fff; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #07070F; }
+  ::-webkit-scrollbar-thumb { background: #2A2A3F; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #7C3AED; }
+
+  /* Glassmorphism */
+  .glass { background: rgba(18,18,31,.62); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid #2A2A3F; }
+  .glass-strong { background: rgba(7,7,15,.82); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+
+  /* Glow ungu */
+  .glow { box-shadow: 0 0 0 1px rgba(124,58,237,.45), 0 0 40px -6px rgba(124,58,237,.55); }
+  .glow-soft { box-shadow: 0 0 60px -20px rgba(124,58,237,.6); }
+  .text-glow { text-shadow: 0 0 24px rgba(167,139,250,.55); }
+
+  /* Gradient */
+  .grad-text { background: linear-gradient(90deg,#A78BFA 0%,#7C3AED 45%,#2563EB 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .btn-grad { background: linear-gradient(135deg,#7C3AED 0%,#6D28D9 50%,#2563EB 100%); }
+  .btn-grad:hover { filter: brightness(1.12); }
+  .bg-grid { background-image: linear-gradient(rgba(42,42,63,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(42,42,63,.35) 1px, transparent 1px); background-size: 44px 44px; }
+  .orb { position: absolute; border-radius: 9999px; filter: blur(90px); pointer-events: none; }
+
+  /* Hover scale 1.02 */
+  .hover-lift { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .hover-lift:hover { transform: scale(1.02); border-color: rgba(124,58,237,.6); }
+
+  /* Fade-up on scroll */
+  .fade-up { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .fade-up.show { opacity: 1; transform: none; }
+
+  /* Marquee */
+  .marquee { overflow: hidden; white-space: nowrap; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .marquee-track { display: inline-flex; width: max-content; animation: marquee 45s linear infinite; }
+  .marquee-track.fast { animation-duration: 35s; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* Dot berkedip */
+  .dot { position: relative; display: inline-block; width: 8px; height: 8px; border-radius: 9999px; }
+  .dot::after { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: inherit; animation: pulseRing 1.6s ease-out infinite; }
+  @keyframes pulseRing { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.8); opacity: 0; } }
+  .blink { animation: blink 1.2s steps(2,start) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+
+  /* Progress bar animasi */
+  .bar { transition: width 1.1s cubic-bezier(.22,1,.36,1); }
+  .bar-stripe { background-image: linear-gradient(45deg, rgba(255,255,255,.18) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.18) 75%, transparent 75%, transparent); background-size: 16px 16px; animation: stripe 1s linear infinite; }
+  @keyframes stripe { to { background-position: 16px 0; } }
+
+  /* Grafik bar CSS */
+  .vbar { transition: height .9s cubic-bezier(.22,1,.36,1), transform .2s; transform-origin: bottom; }
+  .vbar:hover { transform: scaleY(1.06); filter: brightness(1.3); }
+
+  /* Accordion */
+  .acc-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .acc-item.open .acc-body { max-height: 400px; }
+  .acc-item.open .acc-icon { transform: rotate(45deg); background: #7C3AED; }
+  .acc-icon { transition: transform .3s, background .3s; }
+
+  /* Modal */
+  .modal { display: none; }
+  .modal.open { display: flex; animation: fadeIn .25s ease; }
+  .modal.open .modal-box { animation: popIn .3s cubic-bezier(.22,1,.36,1); }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes popIn { from { opacity: 0; transform: translateY(20px) scale(.96); } to { opacity: 1; transform: none; } }
+
+  /* Toast */
+  .toast { transform: translateX(-120%); opacity: 0; transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s; }
+  .toast.show { transform: none; opacity: 1; }
+
+  /* Console */
+  .console { font-family: 'JetBrains Mono', monospace; }
+  .caret::after { content: '▋'; margin-left: 2px; color: #A3E635; animation: blink 1s steps(2,start) infinite; }
+
+  /* Slider RAM */
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 9999px; background: #2A2A3F; outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 9999px; background: #fff; border: 5px solid #7C3AED; box-shadow: 0 0 18px rgba(124,58,237,.8); cursor: pointer; }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 9999px; background: #fff; border: 5px solid #7C3AED; cursor: pointer; }
+
+  /* Cegah item grid melebar di layar kecil */
+  .grid > * { min-width: 0; }
+  select, input { color-scheme: dark; }
+  .field { width: 100%; background: #07070F; border: 1px solid #2A2A3F; border-radius: .75rem; padding: .7rem .9rem; color: #fff; font-size: .9rem; outline: none; transition: border-color .2s, box-shadow .2s; }
+  .field:focus { border-color: #7C3AED; box-shadow: 0 0 0 3px rgba(124,58,237,.25); }
+
+  .chip-opt { border: 1px solid #2A2A3F; background: #07070F; border-radius: .75rem; padding: .55rem .7rem; font-size: .8rem; cursor: pointer; transition: all .2s; text-align: center; }
+  .chip-opt:hover { border-color: #A78BFA; }
+  .chip-opt.active { border-color: #7C3AED; background: rgba(124,58,237,.18); color: #fff; box-shadow: 0 0 20px -6px rgba(124,58,237,.8); }
+
+  .tab-btn.active { background: linear-gradient(135deg,#7C3AED,#2563EB); color: #fff; border-color: transparent; }
+  .side-btn.active { background: rgba(124,58,237,.18); color: #fff; border-color: rgba(124,58,237,.6); }
+
+  .row-new { animation: rowFlash 1.6s ease; }
+  @keyframes rowFlash { 0% { background: rgba(163,230,53,.18); } 100% { background: transparent; } }
+  .float-y { animation: floatY 6s ease-in-out infinite; }
+  @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .wa-pulse::before { content: ''; position: absolute; inset: 0; border-radius: 9999px; background: #22C55E; animation: pulseRing 1.8s ease-out infinite; z-index: -1; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .fade-up { opacity: 1; transform: none; } }
+</style>
+</head>
+
+<body class="bg-bg text-white font-body antialiased overflow-x-hidden">
+
+<!-- =========================================================
+     0. TOP BAR MARQUEE
+     ========================================================= -->
+<div class="relative z-50 bg-gradient-to-r from-brand via-[#5B21B6] to-blue2 text-white text-xs sm:text-sm">
+  <div class="marquee py-2">
+    <div id="topMarquee" class="marquee-track font-medium"></div>
+  </div>
+</div>
+
+<!-- =========================================================
+     1. NAVBAR STICKY
+     ========================================================= -->
+<header id="navbar" class="sticky top-0 z-40 glass-strong border-b border-line transition-shadow">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+    <!-- Logo -->
+    <a href="#beranda" class="flex items-center gap-2.5 shrink-0">
+      <span class="w-9 h-9 rounded-xl btn-grad grid place-items-center font-head font-bold text-lg glow">V</span>
+      <span class="font-head font-bold tracking-tight text-[15px] sm:text-base">VITBRO <span class="text-brand2">HOSTING</span></span>
+    </a>
+
+    <!-- Menu desktop -->
+    <ul class="hidden xl:flex items-center gap-0.5 text-sm text-mute whitespace-nowrap" id="navMenu">
+      <li><a href="#beranda" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Beranda</a></li>
+      <li><a href="#harga" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Harga</a></li>
+      <li><a href="#status" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Status Node</a></li>
+      <li><a href="#ddos" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Proteksi DDoS</a></li>
+      <li><a href="#transaksi" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Logs Pembelian</a></li>
+      <li><a href="#testimoni" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Testimoni</a></li>
+      <li><a href="#faq" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">FAQ</a></li>
+      <li><a href="#blog" class="px-2 py-2 rounded-lg hover:text-white hover:bg-white/5 transition">Blog</a></li>
+    </ul>
+
+    <!-- Kanan -->
+    <div class="flex items-center gap-2">
+      <a href="#status" class="hidden 2xl:flex whitespace-nowrap items-center gap-2 text-xs px-3 py-1.5 rounded-full border border-on/30 bg-on/10 text-on">
+        <span class="dot bg-on"></span> Semua Sistem Online
+      </a>
+      <a href="http://panel.vitbrohosting.id" data-open-client class="hidden md:inline-flex whitespace-nowrap text-sm px-4 py-2 rounded-xl border border-brand/60 text-brand2 hover:bg-brand/10 transition">Login Panel</a>
+      <a href="http://wa.me/628218759054?text=Halo%20VITBRO%20saya%20mau%20buat%20server" target="_blank" rel="noopener" class="hidden sm:inline-flex whitespace-nowrap text-sm font-semibold px-4 py-2 rounded-xl btn-grad glow transition">Buat Server</a>
+      <!-- Hamburger -->
+      <button id="burger" class="xl:hidden w-10 h-10 grid place-items-center rounded-xl border border-line" aria-label="Buka menu">
+        <svg id="burgerIcon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Menu mobile -->
+  <div id="mobileMenu" class="xl:hidden hidden border-t border-line bg-bg/95">
+    <div class="px-4 py-4 grid grid-cols-2 gap-2 text-sm">
+      <a href="#beranda" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">🏠 Beranda</a>
+      <a href="#harga" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">💰 Harga</a>
+      <a href="#status" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">📡 Status Node</a>
+      <a href="#ddos" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">🛡️ Proteksi DDoS</a>
+      <a href="#transaksi" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">🧾 Logs Pembelian</a>
+      <a href="#testimoni" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">⭐ Testimoni</a>
+      <a href="#faq" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">❓ FAQ</a>
+      <a href="#blog" class="m-link px-3 py-2.5 rounded-lg bg-card border border-line">📰 Blog</a>
+    </div>
+    <div class="px-4 pb-4 grid gap-2">
+      <div class="flex items-center justify-center gap-2 text-xs py-2 rounded-lg border border-on/30 bg-on/10 text-on"><span class="dot bg-on"></span> Semua Sistem Online</div>
+      <div class="grid grid-cols-2 gap-2">
+        <a href="http://panel.vitbrohosting.id" data-open-client class="text-center text-sm px-4 py-2.5 rounded-xl border border-brand/60 text-brand2">Login Panel</a>
+        <a href="http://wa.me/628218759054?text=Halo%20VITBRO%20saya%20mau%20buat%20server" target="_blank" rel="noopener" class="text-center text-sm font-semibold px-4 py-2.5 rounded-xl btn-grad">Buat Server</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- =========================================================
+     2. HERO 2 KOLOM
+     ========================================================= -->
+<section id="beranda" class="relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_top,#000_30%,transparent_75%)]"></div>
+  <div class="orb w-[420px] h-[420px] bg-brand/40 -top-32 -left-24"></div>
+  <div class="orb w-[380px] h-[380px] bg-blue2/30 top-40 -right-24"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 lg:pt-20 lg:pb-24 grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Kiri -->
+    <div class="fade-up">
+      <div class="inline-flex flex-wrap items-center gap-2 text-[11px] sm:text-xs px-3 py-1.5 rounded-full glass mb-6">
+        <span class="text-mt">★★★★★</span>
+        <span class="font-semibold">4.9/5 DARI <span data-cfg="reviewCount">1120</span> REVIEW GOOGLE &amp; DISCORD</span>
+        <span class="text-dim hidden sm:inline">|</span>
+        <span class="text-lime2 font-semibold">TERPERCAYA SEJAK 2023</span>
+      </div>
+
+      <h1 class="font-head font-bold text-4xl sm:text-5xl xl:text-6xl leading-[1.05] tracking-tight">
+        Server Minecraft <span class="grad-text text-glow">ANTI LAG.</span><br>
+        Aktif Dalam <span class="text-lime2">60 Detik.</span>
+      </h1>
+
+      <p class="mt-5 text-mute text-base sm:text-lg leading-relaxed max-w-xl">
+        Panel Pterodactyl Terbaru, Lokasi <b class="text-white">Singapore &amp; Jakarta</b>, Support <b class="text-white">Java + Bedrock Crossplay</b>, Garansi Uptime 99.9% Atau <b class="text-white">Uang Kembali 100%</b>.
+      </p>
+
+      <ul class="mt-6 space-y-2.5 text-sm sm:text-base">
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-on/15 text-on grid place-items-center shrink-0"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Tanpa Setup Ribet - Tinggal Main</li>
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-on/15 text-on grid place-items-center shrink-0"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Install Plugin 1 Klik - 5000+ Plugin</li>
+        <li class="flex items-center gap-3"><span class="w-6 h-6 rounded-full bg-on/15 text-on grid place-items-center shrink-0"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>Backup Otomatis Tiap Hari</li>
+      </ul>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a data-wa="hero" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3.5 rounded-xl btn-grad glow hover-lift">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36A9.43 9.43 0 012.6 12C2.6 6.8 6.83 2.56 12.05 2.56c2.52 0 4.9.98 6.68 2.77a9.38 9.38 0 012.76 6.68c0 5.21-4.24 9.45-9.45 9.45zM20.08 3.94A11.32 11.32 0 0012.04.62C5.77.62.66 5.73.66 12c0 2 .52 3.96 1.52 5.69L.57 23.38l5.83-1.53a11.36 11.36 0 005.64 1.44h.01c6.27 0 11.38-5.11 11.38-11.38 0-3.04-1.18-5.9-3.35-8.06z"/></svg>
+          Buat Server Sekarang
+        </a>
+        <a href="#harga" class="inline-flex items-center justify-center gap-2 font-semibold px-6 py-3.5 rounded-xl border border-line bg-card hover:border-brand2 transition">
+          Lihat Harga
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
+        </a>
+      </div>
+
+      <!-- Metode pembayaran -->
+      <div class="mt-8">
+        <p class="text-xs text-dim mb-2 uppercase tracking-wider">Pembayaran:</p>
+        <div id="heroPayments" class="flex flex-wrap gap-1.5"></div>
+        <p class="mt-3 text-xs text-mute flex flex-wrap gap-x-4 gap-y-1">
+          <span>✅ Tanpa Kartu Kredit</span><span>🏪 Bisa Bayar di Indomaret</span><span>⚡ Proses Otomatis 24 Jam</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Kanan: Mockup Panel Pterodactyl -->
+    <div class="fade-up relative">
+      <div class="absolute -inset-4 bg-gradient-to-br from-brand/30 to-blue2/20 blur-3xl rounded-[2rem]"></div>
+      <div class="relative rounded-2xl border border-line bg-card overflow-hidden glow-soft float-y">
+        <!-- Header panel -->
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-line bg-[#0D0D18]">
+          <span class="w-3 h-3 rounded-full bg-off"></span><span class="w-3 h-3 rounded-full bg-mt"></span><span class="w-3 h-3 rounded-full bg-on"></span>
+          <div class="ml-2 flex-1 truncate text-[11px] sm:text-xs text-mute font-mono bg-bg/70 px-3 py-1 rounded-md border border-line">
+            🔒 panel.vitbrohosting.id <span class="text-dim">|</span> Server: <span class="text-brand2">andi_survival</span> <span class="text-dim">|</span> Node: <span class="text-lime2">SG-1</span>
+          </div>
+        </div>
+        <div class="p-4 sm:p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <p class="font-head font-semibold">andi_survival</p>
+              <p class="text-xs text-dim">Paper 1.21.1 • 103.xxx.xxx.12:25565</p>
+            </div>
+            <span id="mockStatus" class="text-xs px-2.5 py-1 rounded-full bg-on/15 text-on border border-on/30 flex items-center gap-1.5"><span class="dot bg-on"></span><span>RUNNING</span></span>
+          </div>
+
+          <!-- Console -->
+          <div id="console" class="console bg-black rounded-xl border border-line p-3 h-52 sm:h-56 overflow-hidden text-[11px] sm:text-xs leading-relaxed text-[#D4D4D8]"></div>
+          <div class="mt-2 flex items-center gap-2 bg-black/60 border border-line rounded-lg px-3 py-2 console text-xs text-dim">
+            <span class="text-brand2">container@vitbro~</span><span class="caret"></span>
+          </div>
+
+          <!-- Stats -->
+          <div class="mt-4 grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
+            <div class="bg-bg rounded-lg border border-line p-2.5">
+              <p class="text-dim">CPU</p><p id="mCpu" class="font-head font-bold text-base">32%</p>
+              <div class="h-1 mt-1 bg-line rounded"><div id="mCpuBar" class="bar h-1 rounded bg-brand" style="width:32%"></div></div>
+            </div>
+            <div class="bg-bg rounded-lg border border-line p-2.5">
+              <p class="text-dim">RAM</p><p class="font-head font-bold text-base"><span id="mRam">2.8</span><span class="text-dim text-xs">GB/4GB</span></p>
+              <div class="h-1 mt-1 bg-line rounded"><div id="mRamBar" class="bar h-1 rounded bg-blue2" style="width:70%"></div></div>
+            </div>
+            <div class="bg-bg rounded-lg border border-line p-2.5">
+              <p class="text-dim">Players</p><p class="font-head font-bold text-base"><span id="mPlayers">12</span><span class="text-dim text-xs">/35</span></p>
+            </div>
+            <div class="bg-bg rounded-lg border border-line p-2.5">
+              <p class="text-dim">TPS</p><p id="mTps" class="font-head font-bold text-base text-on">20.0</p>
+            </div>
+            <div class="bg-bg rounded-lg border border-line p-2.5 col-span-2 sm:col-span-1">
+              <p class="text-dim">Uptime</p><p id="mUptime" class="font-head font-bold text-base">12d 4h</p>
+            </div>
+          </div>
+
+          <!-- Tombol -->
+          <div class="mt-4 grid grid-cols-3 gap-2 text-sm font-semibold">
+            <button data-power="start" class="py-2.5 rounded-lg bg-on/15 text-on border border-on/40 hover:bg-on/25 transition">▶ Start</button>
+            <button data-power="restart" class="py-2.5 rounded-lg bg-mt/15 text-mt border border-mt/40 hover:bg-mt/25 transition">↻ Restart</button>
+            <button data-power="stop" class="py-2.5 rounded-lg bg-off/15 text-off border border-off/40 hover:bg-off/25 transition">■ Stop</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. TRUST BAR
+     ========================================================= -->
+<section class="relative border-y border-line bg-card/40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div class="fade-up glass rounded-2xl p-5 text-center hover-lift">
+        <p class="text-2xl">🖥️</p>
+        <p class="font-head font-bold text-3xl sm:text-4xl mt-1"><span id="statServers" data-count="2347">0</span></p>
+        <p class="text-mute text-xs sm:text-sm mt-1">Server Aktif</p>
+      </div>
+      <div class="fade-up glass rounded-2xl p-5 text-center hover-lift">
+        <p class="text-2xl">👥</p>
+        <p class="font-head font-bold text-3xl sm:text-4xl mt-1"><span id="statCustomers" data-count="3890">0</span></p>
+        <p class="text-mute text-xs sm:text-sm mt-1">Total Pelanggan</p>
+      </div>
+      <div class="fade-up glass rounded-2xl p-5 text-center hover-lift">
+        <p class="text-2xl">📈</p>
+        <p class="font-head font-bold text-3xl sm:text-4xl mt-1 text-on"><span id="statUptime" data-count="99.98" data-dec="2">0</span>%</p>
+        <p class="text-mute text-xs sm:text-sm mt-1">Uptime 30 Hari</p>
+      </div>
+      <div class="fade-up glass rounded-2xl p-5 text-center hover-lift">
+        <p class="text-2xl">🛡️</p>
+        <p class="font-head font-bold text-3xl sm:text-4xl mt-1 text-brand2"><span id="statDdos" data-count="1284">0</span></p>
+        <p class="text-mute text-xs sm:text-sm mt-1">DDoS Diblokir</p>
+      </div>
+    </div>
+    <div class="mt-8 fade-up">
+      <p class="text-center text-xs uppercase tracking-[.2em] text-dim mb-4">Didukung Oleh</p>
+      <div id="partners" class="flex flex-wrap justify-center gap-x-8 gap-y-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4. KALKULATOR HARGA INTERAKTIF
+     ========================================================= -->
+<section id="kalkulator" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+  <div class="text-center max-w-2xl mx-auto fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Kalkulator</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Hitung Kebutuhan Servermu <span class="grad-text">- Gak Perlu Tebak-tebak</span></h2>
+    <p class="text-mute mt-3">Geser RAM, pilih versi dan lokasi. Harga dan rekomendasi langsung muncul.</p>
+  </div>
+
+  <div class="mt-10 grid lg:grid-cols-5 gap-5 fade-up">
+    <!-- Input -->
+    <div class="lg:col-span-3 glass rounded-2xl p-5 sm:p-7">
+      <div class="flex items-center justify-between">
+        <label class="font-semibold">RAM Server</label>
+        <span id="calcRamLabel" class="font-head font-bold text-2xl grad-text">4GB</span>
+      </div>
+      <input id="calcRam" type="range" min="0" max="4" step="1" value="1" class="mt-4">
+      <div id="calcRamTicks" class="flex justify-between text-xs text-dim mt-2"></div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mt-7">
+        <div>
+          <label class="text-sm font-semibold">Versi / Software</label>
+          <select id="calcVersion" class="field mt-2"></select>
+        </div>
+        <div>
+          <label class="text-sm font-semibold">Lokasi Server</label>
+          <select id="calcLoc" class="field mt-2"></select>
+        </div>
+      </div>
+      <p id="calcVersionNote" class="mt-4 text-xs text-mute bg-bg/60 border border-line rounded-lg p-3"></p>
+    </div>
+
+    <!-- Output -->
+    <div class="lg:col-span-2 rounded-2xl p-5 sm:p-7 border border-brand/50 bg-gradient-to-br from-brand/20 via-card to-blue2/10 glow">
+      <p class="text-sm text-mute">Estimasi Harga</p>
+      <p class="font-head font-bold text-4xl mt-1"><span id="calcPrice">Rp 38.000</span><span class="text-base text-mute font-normal">/bln</span></p>
+      <p id="calcPlanName" class="text-xs mt-1 text-brand2">Setara paket PRO</p>
+      <div class="grid grid-cols-2 gap-2 mt-5 text-sm">
+        <div class="bg-bg/70 rounded-xl border border-line p-3"><p class="text-dim text-xs">Player Disarankan</p><p id="calcPlayers" class="font-semibold mt-0.5">35</p></div>
+        <div class="bg-bg/70 rounded-xl border border-line p-3"><p class="text-dim text-xs">Storage NVMe</p><p id="calcStorage" class="font-semibold mt-0.5">40GB</p></div>
+        <div class="bg-bg/70 rounded-xl border border-line p-3"><p class="text-dim text-xs">TPS Estimasi</p><p id="calcTps" class="font-semibold mt-0.5 text-on">20.0</p></div>
+        <div class="bg-bg/70 rounded-xl border border-line p-3"><p class="text-dim text-xs">Ping</p><p id="calcPing" class="font-semibold mt-0.5 text-lime2">12ms</p></div>
+      </div>
+      <div class="mt-4 text-sm bg-lime2/10 border border-lime2/30 text-lime2 rounded-xl p-3">💡 Rekomendasi: <span id="calcRec" class="text-white">Cocok untuk Survival + 20 Plugin</span></div>
+      <a id="calcBuy" target="_blank" rel="noopener" class="mt-5 w-full inline-flex justify-center items-center gap-2 font-semibold px-6 py-3.5 rounded-xl btn-grad hover-lift">🛒 Beli Paket Ini - WA</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     5. PERBANDINGAN VITBRO VS HOSTING LAIN
+     ========================================================= -->
+<section id="banding" class="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
+  <div class="text-center max-w-2xl mx-auto fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Perbandingan</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">VITBRO vs Hosting Lain</h2>
+    <p class="text-mute mt-3">Bandingkan sendiri. Angka di bawah kami tulis apa adanya.</p>
+  </div>
+  <div class="mt-10 overflow-x-auto rounded-2xl border border-line fade-up">
+    <table class="w-full min-w-[640px] text-sm">
+      <thead>
+        <tr class="bg-card">
+          <th class="text-left p-4 font-head text-mute font-medium">Fitur</th>
+          <th class="p-4 font-head bg-brand/20 border-x border-brand/50 text-white">
+            <div class="flex items-center justify-center gap-2"><span class="w-6 h-6 rounded-md btn-grad grid place-items-center text-xs font-bold">V</span>VITBRO HOSTING</div>
+          </th>
+          <th class="p-4 font-head text-mute font-medium">Hosting Lain A</th>
+          <th class="p-4 font-head text-mute font-medium">Hosting Lain B</th>
+        </tr>
+      </thead>
+      <tbody id="compareBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =========================================================
+     6. STATUS NODE REALTIME
+     ========================================================= -->
+<section id="status" class="relative py-20 bg-card/30 border-y border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-3xl mx-auto fade-up">
+      <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-on uppercase"><span class="dot bg-on"></span> Live</span>
+      <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Status Node Live <span class="grad-text">- Transparan 100%</span></h2>
+      <p class="text-mute mt-3">Update Tiap 30 Detik. <span class="text-dim">Terakhir update: <span id="nodeUpdated" class="text-white">-</span> WIB • Update berikutnya <span id="nodeNext" class="text-lime2">30</span>s</span></p>
+    </div>
+
+    <div id="nodeGrid" class="mt-10 grid md:grid-cols-2 gap-5"></div>
+
+    <!-- Grafik uptime 90 hari -->
+    <div class="mt-8 glass rounded-2xl p-5 sm:p-7 fade-up">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+        <div>
+          <h3 class="font-head font-bold text-xl">Grafik Uptime 90 Hari</h3>
+          <p class="text-sm text-mute">Rata-rata seluruh node: <span id="uptime90Avg" class="text-on font-semibold">99.98%</span></p>
+        </div>
+        <div class="flex items-center gap-3 text-xs text-mute">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-on"></span>Normal</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-mt"></span>Gangguan Minor</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-off"></span>Insiden</span>
+        </div>
+      </div>
+      <div id="uptime90" class="mt-6 h-32 flex items-end gap-[2px] sm:gap-[3px]"></div>
+      <div class="flex justify-between text-[11px] text-dim mt-2"><span>90 hari lalu</span><span>45 hari</span><span>Hari ini</span></div>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a href="http://status.vitbrohosting.id" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 font-semibold px-5 py-3 rounded-xl border border-line bg-bg hover:border-brand2 transition">📊 Lihat Status Page</a>
+        <a data-wa="statusSub" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 font-semibold px-5 py-3 rounded-xl bg-on/15 text-on border border-on/40 hover:bg-on/25 transition">🔔 Subscribe Update via WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     7. FITUR LENGKAP 12 GRID
+     ========================================================= -->
+<section id="fitur" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+  <div class="text-center max-w-2xl mx-auto fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Fitur Lengkap</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Semua yang Kamu Butuhkan <span class="grad-text">Sudah Ada</span></h2>
+    <p class="text-mute mt-3">12 fitur inti di setiap server VITBRO.</p>
+  </div>
+  <div id="featureGrid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+</section>
+
+<!-- =========================================================
+     8. LOGS PROTEKSI DDOS
+     ========================================================= -->
+<section id="ddos" class="relative py-20 bg-card/30 border-y border-line overflow-hidden">
+  <div class="orb w-[360px] h-[360px] bg-off/10 -left-40 top-10"></div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-3xl mx-auto fade-up">
+      <span class="text-xs font-semibold tracking-widest text-off uppercase">🛡️ Proteksi DDoS</span>
+      <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Logs Serangan DDoS Yang Berhasil Kami Blokir <span class="grad-text">- Bukti Nyata Bukan Janji</span></h2>
+    </div>
+
+    <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 fade-up">
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Total Bulan Ini</p><p id="ddMonth" class="font-head font-bold text-3xl mt-1">1284</p></div>
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Serangan Terbesar</p><p class="font-head font-bold text-3xl mt-1 text-off"><span id="ddMax">24.7</span> <span class="text-base">Gbps</span></p></div>
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Total Tahun Ini</p><p id="ddYear" class="font-head font-bold text-3xl mt-1">14892</p></div>
+      <div class="glass rounded-2xl p-5 border-on/40"><p class="text-xs text-mute">Downtime Akibat DDoS</p><p class="font-head font-bold text-3xl mt-1 text-on">0 <span class="text-base">Detik</span></p></div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap items-center gap-2 fade-up" id="ddFilter"></div>
+
+    <div class="mt-4 overflow-x-auto rounded-2xl border border-line bg-bg/60 fade-up">
+      <table class="w-full min-w-[760px] text-sm">
+        <thead class="bg-card text-mute text-xs uppercase tracking-wider">
+          <tr>
+            <th class="text-left p-3.5">Waktu (WIB)</th>
+            <th class="text-left p-3.5">Node</th>
+            <th class="text-left p-3.5">Jenis Serangan</th>
+            <th class="text-left p-3.5">Kekuatan</th>
+            <th class="text-left p-3.5">Durasi</th>
+            <th class="text-left p-3.5">Status</th>
+          </tr>
+        </thead>
+        <tbody id="ddBody" class="font-mono text-xs sm:text-[13px]"></tbody>
+      </table>
+    </div>
+    <div class="mt-4 text-xs text-mute flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-1 fade-up">
+      <span>🔄 Logs diupdate otomatis tiap 1 jam</span>
+      <span>🛡️ Proteksi: VITBRO Shield + Cloudflare + OVH Game Firewall</span>
+      <span class="text-on">✅ Semua serangan berhasil diblokir tanpa downtime</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     9. HARGA PAKET 4 CARD + TOGGLE DURASI
+     ========================================================= -->
+<section id="harga" class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20">
+  <div class="text-center max-w-2xl mx-auto fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Harga Paket</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Pilih Paket, <span class="grad-text">Langsung Main</span></h2>
+    <p class="text-mute mt-3">Bayar lebih lama, hemat lebih banyak. Harga sudah termasuk PPN.</p>
+  </div>
+
+  <!-- Toggle durasi -->
+  <div class="mt-8 flex justify-center fade-up">
+    <div id="durToggle" class="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl bg-card border border-line"></div>
+  </div>
+
+  <div id="planGrid" class="mt-12 grid sm:grid-cols-2 xl:grid-cols-4 gap-5 items-stretch"></div>
+
+  <!-- Info bawah harga -->
+  <div class="mt-10 grid md:grid-cols-3 gap-4 fade-up">
+    <div class="glass rounded-2xl p-5 text-sm"><p class="text-2xl">🛡️</p><p class="font-semibold mt-2">Garansi 3 Hari Uang Kembali 100%</p><p class="text-mute mt-1">Semua paket garansi 3 hari uang kembali 100% jika server tidak jalan.</p></div>
+    <div class="glass rounded-2xl p-5 text-sm"><p class="text-2xl">🔄</p><p class="font-semibold mt-2">Upgrade/Downgrade Kapan Saja</p><p class="text-mute mt-1">Bisa upgrade/downgrade kapan saja tanpa hapus data. Harga sudah termasuk PPN.</p></div>
+    <div class="glass rounded-2xl p-5 text-sm"><p class="text-2xl">➕</p><p class="font-semibold mt-2">Add-on</p><ul id="addonList" class="text-mute mt-1 space-y-1"></ul></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     10. LOGS PEMBELIAN REALTIME
+     ========================================================= -->
+<section id="transaksi" class="relative py-20 bg-card/30 border-y border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-3xl mx-auto fade-up">
+      <span class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-on uppercase"><span class="dot bg-on"></span> Real Time</span>
+      <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Transaksi Terbaru <span class="grad-text">- Real Time &amp; Terverifikasi</span></h2>
+    </div>
+
+    <div class="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 fade-up">
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Hari Ini</p><p class="font-head font-bold text-3xl mt-1"><span id="txToday">87</span> <span class="text-sm text-mute font-normal">Transaksi</span></p></div>
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Bulan Ini</p><p id="txMonth" class="font-head font-bold text-3xl mt-1">2412</p></div>
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Total Pelanggan</p><p id="txCustomers" class="font-head font-bold text-3xl mt-1">3890</p></div>
+      <div class="glass rounded-2xl p-5"><p class="text-xs text-mute">Rating</p><p class="font-head font-bold text-3xl mt-1 text-mt">4.9<span class="text-base text-mute">/5</span></p></div>
+    </div>
+
+    <!-- Marquee transaksi -->
+    <div class="mt-6 marquee rounded-xl border border-line bg-bg/60 py-3 fade-up">
+      <div id="txMarquee" class="marquee-track fast text-sm"></div>
+    </div>
+
+    <div class="mt-4 rounded-2xl border border-line bg-bg/60 overflow-hidden fade-up">
+      <div class="overflow-x-auto max-h-[460px] overflow-y-auto">
+        <table class="w-full min-w-[820px] text-sm">
+          <thead class="bg-card text-mute text-xs uppercase tracking-wider sticky top-0 z-10">
+            <tr>
+              <th class="text-left p-3.5">ID Transaksi</th>
+              <th class="text-left p-3.5">Pembeli</th>
+              <th class="text-left p-3.5">Paket</th>
+              <th class="text-left p-3.5">Harga</th>
+              <th class="text-left p-3.5">Metode</th>
+              <th class="text-left p-3.5">Status</th>
+              <th class="text-left p-3.5">Waktu</th>
+            </tr>
+          </thead>
+          <tbody id="txBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mt-5 flex justify-center fade-up">
+      <button id="btnCekTx" class="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl border border-brand/60 text-brand2 hover:bg-brand/10 transition">🔍 Cek Transaksi Saya</button>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     11. TESTIMONI TRANSAKSI 6 CARD + VIDEO PLACEHOLDER
+     ========================================================= -->
+<section id="testimoni" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+  <div class="text-center max-w-2xl mx-auto fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Testimoni</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Bukti Transaksi Nyata <span class="grad-text">Dari Pelanggan VITBRO</span></h2>
+  </div>
+
+  <!-- Video placeholder -->
+  <div class="mt-10 fade-up">
+    <div class="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden border border-line bg-gradient-to-br from-brand/30 via-card to-blue2/20 grid place-items-center group cursor-pointer" id="videoBox">
+      <div class="absolute inset-0 bg-grid opacity-30"></div>
+      <div class="relative text-center px-4">
+        <button class="w-20 h-20 rounded-full btn-grad grid place-items-center mx-auto glow group-hover:scale-110 transition" aria-label="Putar video">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <p class="font-head font-bold text-xl sm:text-2xl mt-5">Video Testimoni Pelanggan VITBRO</p>
+        <p class="text-mute text-sm mt-1">Tonton review jujur dari owner server komunitas • YouTube: VITBRO HOSTING</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="testiGrid" class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+  <div class="mt-8 flex justify-center fade-up">
+    <a id="btnMoreReview" target="_blank" rel="noopener" class="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl bg-[#5865F2] hover:brightness-110 transition">💬 Lihat 1120 Review Lainnya di Discord</a>
+  </div>
+</section>
+
+<!-- =========================================================
+     12. CARA ORDER 3 LANGKAH + TIMELINE
+     ========================================================= -->
+<section id="cara-order" class="py-20 bg-card/30 border-y border-line">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto fade-up">
+      <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Cara Order</span>
+      <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">3 Langkah, <span class="grad-text">Server Langsung Jalan</span></h2>
+    </div>
+
+    <div class="mt-12 grid lg:grid-cols-2 gap-10 items-center">
+      <!-- Timeline -->
+      <div class="relative fade-up">
+        <div class="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-brand via-blue2 to-lime2"></div>
+        <div id="steps" class="space-y-6"></div>
+        <div class="mt-8 ml-0 sm:ml-16 rounded-2xl p-4 border border-lime2/40 bg-lime2/10 text-lime2 font-semibold flex items-center gap-3">
+          <span class="text-2xl">⚡</span> Rata-rata aktivasi 47 detik - Tercepat di Indonesia
+        </div>
+      </div>
+
+      <!-- Contoh chat WA -->
+      <div class="fade-up">
+        <div class="max-w-sm mx-auto rounded-[2rem] border-[6px] border-[#1c1c2b] bg-[#0B141A] overflow-hidden shadow-2xl glow-soft">
+          <div class="flex items-center gap-3 px-4 py-3 bg-[#1F2C34]">
+            <span class="w-9 h-9 rounded-full btn-grad grid place-items-center font-bold">V</span>
+            <div class="flex-1"><p class="text-sm font-semibold">VITBRO HOSTING ✔️</p><p class="text-[11px] text-on">online</p></div>
+            <span class="text-mute">⋮</span>
+          </div>
+          <div id="chatBox" class="p-3 space-y-2 min-h-[340px] text-[13px]" style="background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:14px 14px"></div>
+        </div>
+        <p class="text-center text-xs text-dim mt-3">Contoh alur chat order via WhatsApp 0821-8759-054</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     13. FAQ ACCORDION
+     ========================================================= -->
+<section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 py-20">
+  <div class="text-center fade-up">
+    <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">FAQ</span>
+    <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Pertanyaan yang <span class="grad-text">Sering Ditanya</span></h2>
+  </div>
+  <div id="faqList" class="mt-10 space-y-3"></div>
+</section>
+
+<!-- =========================================================
+     BLOG (dari menu navbar)
+     ========================================================= -->
+<section id="blog" class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 fade-up">
+    <div>
+      <span class="text-xs font-semibold tracking-widest text-lime2 uppercase">Blog</span>
+      <h2 class="font-head font-bold text-3xl sm:text-4xl mt-2">Tips &amp; Tutorial Minecraft</h2>
+    </div>
+    <a id="blogAll" class="text-sm text-brand2 hover:underline">Lihat semua artikel →</a>
+  </div>
+  <div id="blogGrid" class="mt-8 grid md:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- =========================================================
+     14. CTA AKHIR + COUNTDOWN
+     ========================================================= -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+  <div class="relative overflow-hidden rounded-3xl p-7 sm:p-12 bg-gradient-to-br from-brand via-[#5B21B6] to-blue2 fade-up">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="orb w-[300px] h-[300px] bg-lime2/30 -right-20 -top-20"></div>
+    <div class="relative grid lg:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="inline-block text-xs font-bold px-3 py-1 rounded-full bg-black/25 border border-white/20">🔥 PROMO 11.11</span>
+        <h2 class="font-head font-bold text-3xl sm:text-5xl mt-4 leading-tight">Mulai Server Impianmu Sekarang</h2>
+        <p class="mt-3 text-white/85 text-lg">Diskon <b class="text-lime2">20%</b> Kode <b class="font-mono bg-black/30 px-2 py-0.5 rounded">VITBRO11</b> Berlaku Sampai 30 Nov 2026</p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a data-wa="cta" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 font-semibold px-6 py-3.5 rounded-xl bg-white text-bg hover-lift">💬 Chat WhatsApp Sekarang - 0821-8759-054</a>
+          <a href="#harga" class="inline-flex justify-center items-center gap-2 font-semibold px-6 py-3.5 rounded-xl border border-white/40 hover:bg-white/10 transition">Lihat Harga</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-sm text-white/80 mb-3 text-center lg:text-left">Promo berakhir dalam:</p>
+        <div class="grid grid-cols-4 gap-2 sm:gap-3" id="countdownBig">
+          <div class="rounded-2xl bg-black/30 border border-white/15 p-3 sm:p-5 text-center"><p data-cd="d" class="font-head font-bold text-3xl sm:text-5xl">00</p><p class="text-xs text-white/70 mt-1">Hari</p></div>
+          <div class="rounded-2xl bg-black/30 border border-white/15 p-3 sm:p-5 text-center"><p data-cd="h" class="font-head font-bold text-3xl sm:text-5xl">00</p><p class="text-xs text-white/70 mt-1">Jam</p></div>
+          <div class="rounded-2xl bg-black/30 border border-white/15 p-3 sm:p-5 text-center"><p data-cd="m" class="font-head font-bold text-3xl sm:text-5xl">00</p><p class="text-xs text-white/70 mt-1">Menit</p></div>
+          <div class="rounded-2xl bg-black/30 border border-white/15 p-3 sm:p-5 text-center"><p data-cd="s" class="font-head font-bold text-3xl sm:text-5xl text-lime2">00</p><p class="text-xs text-white/70 mt-1">Detik</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     FOOTER 4 KOLOM
+     ========================================================= -->
+<footer class="border-t border-line bg-[#05050B]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-10 text-sm">
+    <!-- Kolom 1: Tentang -->
+    <div>
+      <a href="#beranda" class="flex items-center gap-2.5">
+        <span class="w-9 h-9 rounded-xl btn-grad grid place-items-center font-head font-bold text-lg">V</span>
+        <span class="font-head font-bold">VITBRO <span class="text-brand2">HOSTING</span></span>
+      </a>
+      <p class="text-mute mt-4 leading-relaxed">Hosting server Minecraft Indonesia sejak 2023. Panel Pterodactyl, Anti DDoS 1.2 Tbps, node Singapore &amp; Jakarta, support 24/7.</p>
+      <p class="text-mute mt-3">📍 <span data-cfg="location">Manado, Sulawesi Utara, Indonesia</span></p>
+    </div>
+    <!-- Kolom 2: Link cepat -->
+    <div>
+      <h4 class="font-head font-semibold mb-4">Link Cepat</h4>
+      <ul class="space-y-2.5 text-mute">
+        <li><a href="#harga" class="hover:text-white">Harga</a></li>
+        <li><a href="#status" class="hover:text-white">Status Node</a></li>
+        <li><a href="#testimoni" class="hover:text-white">Testimoni</a></li>
+        <li><a href="#blog" class="hover:text-white">Blog</a></li>
+        <li><a href="#kalkulator" class="hover:text-white">Kalkulator Harga</a></li>
+        <li><a href="http://status.vitbrohosting.id" target="_blank" rel="noopener" class="hover:text-white">Status Page</a></li>
+      </ul>
+    </div>
+    <!-- Kolom 3: Bantuan -->
+    <div>
+      <h4 class="font-head font-semibold mb-4">Bantuan</h4>
+      <ul class="space-y-2.5 text-mute">
+        <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+        <li><button data-policy="tos" class="hover:text-white">Terms of Service</button></li>
+        <li><button data-policy="privacy" class="hover:text-white">Privacy Policy</button></li>
+        <li><button data-policy="refund" class="hover:text-white">Refund Policy</button></li>
+        <li><button data-policy="sla" class="hover:text-white">SLA</button></li>
+        <li><a data-wa="footer" target="_blank" rel="noopener" class="hover:text-white">Hubungi CS</a></li>
+      </ul>
+    </div>
+    <!-- Kolom 4: Kontak -->
+    <div>
+      <h4 class="font-head font-semibold mb-4">Kontak</h4>
+      <ul class="space-y-2.5 text-mute">
+        <li><a data-wa="footer" target="_blank" rel="noopener" class="hover:text-white">💬 WA 0821-8759-054</a></li>
+        <li><a id="ftEmail" class="hover:text-white break-all">✉️ support@vitbrohosting.id</a></li>
+        <li><a id="ftBilling" class="hover:text-white break-all">🧾 billing@vitbrohosting.id</a></li>
+        <li><a id="ftDiscord" target="_blank" rel="noopener" class="hover:text-white">🎮 Discord (<span id="ftDiscordCount">15230</span> member)</a></li>
+        <li class="flex gap-3">
+          <a id="ftIg" target="_blank" rel="noopener" class="hover:text-white">📸 Instagram</a>
+          <a id="ftTt" target="_blank" rel="noopener" class="hover:text-white">🎵 TikTok</a>
+          <a id="ftYt" target="_blank" rel="noopener" class="hover:text-white">▶️ YouTube</a>
+        </li>
+        <li>🕒 Jam Operasional 24/7</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-line">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 text-xs text-dim flex flex-col md:flex-row gap-2 justify-between text-center md:text-left">
+      <p>Copyright © 2026 VITBRO HOSTING - All Rights Reserved</p>
+      <p>Made with ❤️ in Manado Indonesia • <span data-cfg="legal">PT VITBRO DIGITAL NUSANTARA</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================
+     FLOATING WHATSAPP
+     ========================================================= -->
+<div class="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50 flex items-center gap-3">
+  <div class="hidden sm:block glass rounded-xl px-3 py-2 text-xs">
+    <p class="font-semibold flex items-center gap-1.5"><span class="dot bg-on"></span>CS Online</p>
+    <p class="text-mute">Balas &lt;5 Menit</p>
+  </div>
+  <a href="https://wa.me/628218759054?text=Halo%20VITBRO%20saya%20mau%20tanya" target="_blank" rel="noopener" class="relative isolate wa-pulse w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-on grid place-items-center shadow-lg shadow-on/30 hover:scale-105 transition" aria-label="Chat WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.45 9.45 0 01-4.82-1.32l-.35-.2-3.58.94.96-3.49-.23-.36A9.43 9.43 0 012.6 12C2.6 6.8 6.83 2.56 12.05 2.56c2.52 0 4.9.98 6.68 2.77a9.38 9.38 0 012.76 6.68c0 5.21-4.24 9.45-9.45 9.45zM20.08 3.94A11.32 11.32 0 0012.04.62C5.77.62.66 5.73.66 12c0 2 .52 3.96 1.52 5.69L.57 23.38l5.83-1.53a11.36 11.36 0 005.64 1.44h.01c6.27 0 11.38-5.11 11.38-11.38 0-3.04-1.18-5.9-3.35-8.06z"/></svg>
+    <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-off text-[11px] font-bold grid place-items-center border-2 border-bg">1</span>
+  </a>
+</div>
+
+<!-- =========================================================
+     TOAST NOTIFIKASI PEMBELIAN
+     ========================================================= -->
+<div id="toast" class="toast fixed left-4 bottom-4 sm:left-6 sm:bottom-6 z-50 max-w-[300px] sm:max-w-xs glass rounded-2xl p-3.5 flex items-center gap-3 shadow-2xl">
+  <div class="w-11 h-11 rounded-xl btn-grad grid place-items-center text-lg shrink-0">🛒</div>
+  <div class="text-sm leading-snug">
+    <p id="toastText" class="font-medium">-</p>
+    <p id="toastMeta" class="text-xs text-dim mt-0.5">-</p>
+  </div>
+  <button id="toastClose" class="self-start text-dim hover:text-white text-lg leading-none" aria-label="Tutup">×</button>
+</div>
+
+<!-- =========================================================
+     POPUP PROMO (muncul setelah 5 detik)
+     ========================================================= -->
+<div id="promoModal" class="modal fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm items-center justify-center p-4">
+  <div class="modal-box relative w-full max-w-md rounded-3xl overflow-hidden border border-brand/50 glow bg-card">
+    <button data-close class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/40 grid place-items-center text-xl hover:bg-black/60" aria-label="Tutup">×</button>
+    <div class="relative p-7 text-center bg-gradient-to-br from-brand via-[#5B21B6] to-blue2">
+      <div class="absolute inset-0 bg-grid opacity-20"></div>
+      <p class="relative text-5xl">🎁</p>
+      <p class="relative font-head font-bold text-2xl mt-3">Dapatkan Diskon 20%</p>
+      <p class="relative text-white/85 text-sm mt-1">Promo 11.11 untuk semua paket</p>
+    </div>
+    <div class="p-6 text-center">
+      <p class="text-sm text-mute">Gunakan kode promo</p>
+      <button id="copyCode" class="mt-2 font-mono font-bold text-2xl tracking-widest px-5 py-2.5 rounded-xl border-2 border-dashed border-lime2 text-lime2 hover:bg-lime2/10 transition">VITBRO11</button>
+      <p class="text-xs text-dim mt-2">Klik kode untuk menyalin • Berakhir dalam <span id="promoCd" class="text-white font-mono">-</span></p>
+      <a data-wa="promo" target="_blank" rel="noopener" class="mt-5 w-full inline-flex justify-center items-center gap-2 font-semibold px-6 py-3.5 rounded-xl bg-on hover:brightness-110 transition">💬 Klaim Diskon via WhatsApp</a>
+      <button data-close class="mt-3 text-sm text-dim hover:text-white">Nanti saja</button>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     HALAMAN 2: MODAL CHECKOUT
+     ========================================================= -->
+<div id="checkoutModal" class="modal fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm items-end sm:items-center justify-center sm:p-4">
+  <div class="modal-box w-full sm:max-w-2xl max-h-[94vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl border border-line bg-card">
+    <div class="sticky top-0 z-10 flex items-center justify-between px-5 sm:px-7 py-4 border-b border-line bg-card/95 backdrop-blur">
+      <div>
+        <p class="text-xs text-dim">Checkout</p>
+        <h3 class="font-head font-bold text-lg">Order Server Minecraft</h3>
+      </div>
+      <button data-close class="w-9 h-9 rounded-full bg-bg border border-line grid place-items-center text-xl" aria-label="Tutup">×</button>
+    </div>
+
+    <div class="p-5 sm:p-7 space-y-6">
+      <!-- Detail paket -->
+      <div id="coPlanBox" class="rounded-2xl p-4 border border-brand/50 bg-brand/10"></div>
+
+      <!-- Pilih paket (ganti cepat) -->
+      <div>
+        <p class="text-sm font-semibold mb-2">Paket</p>
+        <div id="coPlans" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+      </div>
+
+      <!-- Lokasi -->
+      <div>
+        <p class="text-sm font-semibold mb-2">Pilih Lokasi</p>
+        <div id="coLocs" class="grid grid-cols-2 gap-2"></div>
+      </div>
+
+      <!-- Durasi -->
+      <div>
+        <p class="text-sm font-semibold mb-2">Pilih Durasi</p>
+        <div id="coDurs" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+      </div>
+
+      <!-- Metode bayar -->
+      <div>
+        <p class="text-sm font-semibold mb-2">Metode Bayar</p>
+        <div id="coPays" class="grid grid-cols-3 sm:grid-cols-5 gap-2"></div>
+      </div>
+
+      <!-- Data customer -->
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div>
+          <label class="text-sm font-semibold" for="coName">Nama Minecraft</label>
+          <input id="coName" class="field mt-2" placeholder="contoh: Andi" maxlength="24" autocomplete="off">
+        </div>
+        <div>
+          <label class="text-sm font-semibold" for="coWa">Nomor WhatsApp</label>
+          <input id="coWa" class="field mt-2" placeholder="08xxxxxxxxxx" inputmode="numeric" maxlength="15" autocomplete="tel">
+        </div>
+      </div>
+      <div>
+        <label class="text-sm font-semibold" for="coPromo">Kode Promo <span class="text-dim font-normal">(opsional)</span></label>
+        <div class="flex gap-2 mt-2">
+          <input id="coPromo" class="field uppercase" placeholder="VITBRO11" maxlength="16" autocomplete="off">
+          <button id="coPromoBtn" class="px-4 rounded-xl border border-brand/60 text-brand2 text-sm font-semibold hover:bg-brand/10 shrink-0">Pakai</button>
+        </div>
+        <p id="coPromoMsg" class="text-xs mt-1.5"></p>
+      </div>
+
+      <!-- Ringkasan -->
+      <div class="rounded-2xl border border-line bg-bg p-4 text-sm space-y-2">
+        <div class="flex justify-between"><span class="text-mute">Harga paket</span><span id="coSub">-</span></div>
+        <div class="flex justify-between"><span class="text-mute">Diskon durasi</span><span id="coDisc" class="text-lime2">-</span></div>
+        <div class="flex justify-between"><span class="text-mute">Diskon promo</span><span id="coPromoDisc" class="text-lime2">-</span></div>
+        <div class="border-t border-line pt-2 flex justify-between items-end"><span class="font-semibold">Total</span><span id="coTotal" class="font-head font-bold text-2xl grad-text">-</span></div>
+      </div>
+      <p id="coError" class="text-off text-sm hidden"></p>
+
+      <button id="coSubmit" class="w-full inline-flex justify-center items-center gap-2 font-semibold px-6 py-4 rounded-xl bg-on hover:brightness-110 transition">💬 Lanjut ke WhatsApp</button>
+      <p class="text-xs text-dim text-center">Kamu akan diarahkan ke WhatsApp resmi VITBRO 0821-8759-054. Garansi 3 hari uang kembali 100%.</p>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL DETAIL NODE
+     ========================================================= -->
+<div id="nodeModal" class="modal fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm items-center justify-center p-4">
+  <div class="modal-box w-full max-w-lg rounded-3xl border border-line bg-card overflow-hidden">
+    <div class="flex items-center justify-between px-6 py-4 border-b border-line">
+      <h3 id="nmTitle" class="font-head font-bold text-lg">Detail Node</h3>
+      <button data-close class="w-9 h-9 rounded-full bg-bg border border-line grid place-items-center text-xl" aria-label="Tutup">×</button>
+    </div>
+    <div id="nmBody" class="p-6 text-sm space-y-3"></div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL CEK TRANSAKSI
+     ========================================================= -->
+<div id="cekModal" class="modal fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm items-center justify-center p-4">
+  <div class="modal-box w-full max-w-md rounded-3xl border border-line bg-card p-6">
+    <div class="flex items-center justify-between">
+      <h3 class="font-head font-bold text-lg">🔍 Cek Transaksi Saya</h3>
+      <button data-close class="w-9 h-9 rounded-full bg-bg border border-line grid place-items-center text-xl" aria-label="Tutup">×</button>
+    </div>
+    <p class="text-sm text-mute mt-2">Masukkan nomor WhatsApp yang dipakai saat order. Tim billing akan mengirim status transaksi kamu.</p>
+    <input id="cekWa" class="field mt-4" placeholder="08xxxxxxxxxx" inputmode="numeric" maxlength="15">
+    <input id="cekId" class="field mt-2" placeholder="ID Transaksi (opsional) contoh #VTB-20261112-001">
+    <p id="cekErr" class="text-off text-xs mt-2 hidden">Nomor WA tidak valid. Gunakan format 08xxx atau 628xxx.</p>
+    <button id="cekSubmit" class="mt-4 w-full font-semibold px-6 py-3.5 rounded-xl btn-grad">Cek via WhatsApp</button>
+  </div>
+</div>
+
+<!-- =========================================================
+     MODAL KEBIJAKAN (ToS / Privacy / Refund / SLA)
+     ========================================================= -->
+<div id="policyModal" class="modal fixed inset-0 z-[70] bg-black/75 backdrop-blur-sm items-center justify-center p-4">
+  <div class="modal-box w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-3xl border border-line bg-card">
+    <div class="sticky top-0 flex items-center justify-between px-6 py-4 border-b border-line bg-card">
+      <h3 id="pmTitle" class="font-head font-bold text-lg">-</h3>
+      <button data-close class="w-9 h-9 rounded-full bg-bg border border-line grid place-items-center text-xl" aria-label="Tutup">×</button>
+    </div>
+    <div id="pmBody" class="p-6 text-sm text-mute space-y-3 leading-relaxed"></div>
+  </div>
+</div>
+
+<!-- =========================================================
+     HALAMAN 3: CLIENT AREA SIMULASI
+     ========================================================= -->
+<div id="clientArea" class="hidden fixed inset-0 z-[60] bg-bg overflow-hidden">
+  <div class="h-full flex flex-col lg:flex-row">
+    <!-- Sidebar -->
+    <aside class="lg:w-64 shrink-0 border-b lg:border-b-0 lg:border-r border-line bg-[#0B0B16] flex lg:flex-col">
+      <div class="hidden lg:flex items-center gap-2.5 px-5 h-16 border-b border-line">
+        <span class="w-9 h-9 rounded-xl btn-grad grid place-items-center font-head font-bold">V</span>
+        <div><p class="font-head font-bold text-sm">VITBRO</p><p class="text-[11px] text-dim">Client Area</p></div>
+      </div>
+      <nav class="flex lg:flex-col gap-1 p-2 lg:p-3 overflow-x-auto w-full text-sm" id="caNav">
+        <button data-ca="dashboard" class="side-btn active shrink-0 text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-transparent text-mute hover:text-white">📊 <span>Dashboard</span></button>
+        <button data-ca="servers" class="side-btn shrink-0 text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-transparent text-mute hover:text-white">🖥️ <span>Server Saya</span></button>
+        <button data-ca="billing" class="side-btn shrink-0 text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-transparent text-mute hover:text-white">🧾 <span>Billing</span></button>
+        <button data-ca="tickets" class="side-btn shrink-0 text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-transparent text-mute hover:text-white">🎫 <span>Support Ticket</span></button>
+      </nav>
+      <div class="hidden lg:block mt-auto p-4 border-t border-line text-xs text-dim">
+        <p>Butuh bantuan?</p>
+        <a data-wa="clientHelp" target="_blank" rel="noopener" class="text-on font-semibold">WA 0821-8759-054</a>
+      </div>
+    </aside>
+
+    <!-- Konten -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <div class="h-16 shrink-0 flex items-center justify-between gap-3 px-4 sm:px-6 border-b border-line">
+        <div class="min-w-0">
+          <p id="caTitle" class="font-head font-bold truncate">Dashboard</p>
+          <p class="text-xs text-dim truncate">Halo, <span class="text-brand2">Andi</span> • Mode simulasi</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="http://panel.vitbrohosting.id" target="_blank" rel="noopener" class="hidden sm:inline-flex text-xs px-3 py-2 rounded-lg border border-line hover:border-brand2">Buka Panel Asli ↗</a>
+          <button id="caClose" class="text-xs px-3 py-2 rounded-lg bg-off/15 text-off border border-off/40">Keluar</button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 sm:p-6">
+        <div class="mb-4 text-xs rounded-xl border border-mt/30 bg-mt/10 text-mt px-4 py-2.5">ℹ️ Ini halaman simulasi Client Area. Login asli ada di panel.vitbrohosting.id</div>
+        <div id="caContent"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+<script>
+/* =============================================================
+   CONFIG - SEMUA DATA WEBSITE ADA DI SINI
+   Ubah nilai di bawah ini tanpa perlu menyentuh HTML.
+   ============================================================= */
+const CONFIG = {
+  // EDIT DISINI: Identitas brand
+  brand: {
+    name: 'VITBRO HOSTING',
+    tagline: 'Hosting Minecraft Indonesia - Anti Lag, Aktif 60 Detik, Garansi Uptime 99.9%',
+    domain: 'http://vitbrohosting.id',
+    panel: 'http://panel.vitbrohosting.id',
+    statusPage: 'http://status.vitbrohosting.id',
+    wa: '628218759054',                // Nomor WA resmi satu-satunya (format 62)
+    waDisplay: '0821-8759-054',
+    emailSupport: 'support@vitbrohosting.id',
+    emailBilling: 'billing@vitbrohosting.id',
+    discord: 'http://discord.gg/vitbrohosting',
+    discordMembers: 15230,
+    instagram: 'https://instagram.com/vitbro.hosting',
+    tiktok: 'https://tiktok.com/@vitbro.hosting',
+    youtube: 'https://youtube.com/@vitbrohosting',
+    location: 'Manado, Sulawesi Utara, Indonesia',
+    founded: 2023,
+    owner: 'Vitbro',
+    hours: '24/7, Fast Respon <5 Menit',
+    legal: 'PT VITBRO DIGITAL NUSANTARA (Contoh)',
+    reviewCount: 1120,
+    rating: 4.9
+  },
+
+  // EDIT DISINI: Promo
+  promo: {
+    code: 'VITBRO11',
+    percent: 20,
+    deadline: '2026-11-30T23:59:59+07:00', // Countdown ke 30 Nov 2026 WIB
+    popupDelayMs: 5000,                    // Popup muncul setelah 5 detik
+    toastIntervalMs: 15000                 // Toast tiap 15 detik
+  },
+
+  // EDIT DISINI: Pesan WhatsApp pre-filled per konteks
+  waMessages: {
+    hero: 'Halo VITBRO saya mau buat server Minecraft sekarang',
+    nav: 'Halo VITBRO saya mau buat server',
+    floating: 'Halo VITBRO saya mau tanya',
+    cta: 'Halo VITBRO saya mau order server pakai promo VITBRO11 diskon 20%',
+    promo: 'Halo VITBRO saya mau klaim diskon 20% kode VITBRO11',
+    footer: 'Halo VITBRO saya butuh bantuan',
+    statusSub: 'Halo VITBRO saya mau subscribe update status node via WhatsApp',
+    preorder: 'Halo VITBRO saya mau pre-order node ID-2 Jakarta Baru diskon 30%',
+    trial: 'Halo VITBRO saya mau coba trial 1 jam paket STARTER',
+    clientHelp: 'Halo VITBRO saya butuh bantuan di Client Area',
+    ticket: 'Halo VITBRO saya mau buka support ticket baru',
+    blog: 'Halo VITBRO saya mau tanya soal artikel di blog'
+  },
+
+  // EDIT DISINI: Teks top bar marquee
+  marquee: [
+    '🔥 PROMO 11.11 DISKON 20% KODE: VITBRO11',
+    '🖥️ 2347 Server Aktif',
+    '📈 Uptime 99.98%',
+    '🛡️ 1284 DDoS Diblokir Bulan Ini',
+    '💬 CS Online - WA 0821-8759-054',
+    '⚡ Aktivasi Rata-rata 47 Detik'
+  ],
+
+  // EDIT DISINI: Statistik trust bar
+  stats: { servers: 2347, customers: 3890, uptime: 99.98, ddos: 1284 },
+
+  // EDIT DISINI: Didukung oleh
+  partners: ['☁️ OVHcloud', '🌐 Biznet Neo', '🟠 Cloudflare', '🦖 Pterodactyl', '📄 PaperMC', '🟣 Purpur'],
+
+  // EDIT DISINI: Metode pembayaran (hero)
+  payments: ['QRIS', 'DANA', 'OVO', 'GoPay', 'ShopeePay', 'BCA', 'Mandiri', 'BRI', 'Indomaret', 'Alfamart'],
+
+  // EDIT DISINI: Lokasi server
+  locations: [
+    { id: 'sg', name: 'Singapore', ping: 12, flag: '🇸🇬' },
+    { id: 'id', name: 'Jakarta', ping: 8, flag: '🇮🇩' }
+  ],
+
+  // EDIT DISINI: Kalkulator harga (index slider 0-4)
+  calculator: {
+    tiers: [
+      { ram: 2,  price: 20000,  plan: 'STARTER', players: '10-15 Player',   storage: '20GB',  tps: '20.0', rec: 'Cocok untuk Survival bareng teman + 5-10 Plugin ringan' },
+      { ram: 4,  price: 38000,  plan: 'PRO',     players: '20-35 Player',   storage: '40GB',  tps: '20.0', rec: 'Cocok untuk Survival + 20 Plugin' },
+      { ram: 8,  price: 72000,  plan: 'SULTAN',  players: '50-80 Player',   storage: '80GB',  tps: '20.0', rec: 'Cocok untuk SMP Publik, Modpack ringan, 40+ Plugin' },
+      { ram: 16, price: 135000, plan: 'DEWA',    players: 'Unlimited',      storage: '150GB', tps: '19.9 - 20.0', rec: 'Cocok untuk Server Komunitas 100+ player, Network Velocity' },
+      { ram: 32, price: 250000, plan: 'CUSTOM',  players: 'Unlimited (200+)', storage: '300GB', tps: '19.9 - 20.0', rec: 'Cocok untuk Modpack berat (ATM, RLCraft) & Network besar' }
+    ],
+    versions: [
+      { id: 'Paper',   note: 'Paper: performa terbaik untuk plugin Bukkit/Spigot. Pilihan paling populer.' },
+      { id: 'Purpur',  note: 'Purpur: turunan Paper dengan banyak opsi konfigurasi tambahan.' },
+      { id: 'Spigot',  note: 'Spigot: kompatibel dengan hampir semua plugin klasik.' },
+      { id: 'Forge',   note: 'Forge: untuk mod & modpack. Disarankan minimal 6-8GB RAM.', heavy: true },
+      { id: 'Fabric',  note: 'Fabric: mod ringan dan cepat update ke versi terbaru.' },
+      { id: 'Vanilla', note: 'Vanilla: Minecraft murni tanpa plugin atau mod.' },
+      { id: 'Bedrock', note: 'Bedrock: untuk pemain HP, Xbox, PlayStation dan Windows Edition.' }
+    ]
+  },
+
+  // EDIT DISINI: Tabel perbandingan [Fitur, VITBRO, Hosting A, Hosting B]
+  comparison: [
+    ['Harga 2GB',     'Rp 20rb',      'Rp 35rb',      'Rp 45rb'],
+    ['Aktivasi',      '60 detik',     '1-2 jam',      '24 jam'],
+    ['Anti DDoS',     '1.2 Tbps',     'Basic',        'Tidak Ada'],
+    ['Backup',        'Harian',       'Mingguan',     'Bayar'],
+    ['Support',       '<5 menit',     '1 jam',        '1 hari'],
+    ['Garansi',       '3 Hari',       'Tidak Ada',    'Tidak Ada'],
+    ['Lokasi',        'SG + ID',      'SG Saja',      'US Saja']
+  ],
+
+  // EDIT DISINI: Node server
+  nodes: [
+    {
+      id: 'SG-1', name: 'SG-1 SINGAPORE', flag: '🇸🇬', status: 'online', uptime: '99.99%',
+      pingMin: 10, pingMax: 15, cpu: 45, ram: [68, 128], ramType: 'DDR5', disk: [420, 800], diskType: 'NVMe Gen4',
+      slots: [120, 150], cpuModel: 'AMD Ryzen 9 7950X', provider: 'OVH', location: 'Singapore',
+      ip: '103.xxx.xxx.12', incidents: '2x dalam 90 hari', bars: 30, yellowAt: [17], redAt: [],
+      incidentList: ['18 Okt 2026 - Packet loss 4 menit (upstream OVH) - Resolved', '02 Sep 2026 - Restart terjadwal kernel 6 menit - Resolved']
+    },
+    {
+      id: 'ID-1', name: 'ID-1 JAKARTA', flag: '🇮🇩', status: 'online', uptime: '99.97%',
+      pingMin: 7, pingMax: 11, cpu: 62, ram: [82, 128], ramType: 'DDR5', disk: [310, 800], diskType: 'NVMe Gen4',
+      slots: [98, 120], cpuModel: 'AMD Ryzen 9 7900X', provider: 'Biznet Neo', location: 'Jakarta',
+      ip: '103.xxx.xxx.45', incidents: '3x dalam 90 hari', bars: 30, yellowAt: [8], redAt: [],
+      incidentList: ['24 Okt 2026 - Latensi tinggi 9 menit (IIX) - Resolved', '11 Sep 2026 - Maintenance switch 5 menit - Resolved', '20 Agu 2026 - Restart daemon Wings 2 menit - Resolved']
+    },
+    {
+      id: 'SG-2', name: 'SG-2 SINGAPORE', flag: '🇸🇬', status: 'maintenance', uptime: '99.95%',
+      pingMin: 11, pingMax: 16, cpu: 0, ram: [0, 128], ramType: 'DDR5', disk: [380, 800], diskType: 'NVMe Gen4',
+      slots: [110, 150], cpuModel: 'AMD Ryzen 9 7950X', provider: 'OVH', location: 'Singapore',
+      ip: '103.xxx.xxx.78', incidents: '1x dalam 90 hari', bars: 30, yellowAt: [29], redAt: [],
+      maintenance: { msg: 'Maintenance Rutin: Upgrade RAM 128GB ke 256GB', eta: '15.00 WIB', progress: 70 },
+      incidentList: ['Hari ini - Maintenance terjadwal upgrade RAM (server dipindah sementara ke SG-1)']
+    },
+    {
+      id: 'ID-2', name: 'ID-2 JAKARTA BARU', flag: '🇮🇩', status: 'soon', uptime: '-',
+      slots: [0, 200], cpuModel: 'AMD Ryzen 9 9950X', provider: 'Biznet Neo', location: 'Jakarta',
+      ramType: 'DDR5', ram: [0, 256], diskType: 'NVMe Gen5', disk: [0, 1600],
+      ip: 'Belum tersedia', incidents: '-',
+      soon: { release: '1 Desember 2026', promo: 'Pre-Order Diskon 30%' }
+    }
+  ],
+
+  // EDIT DISINI: Uptime 90 hari (index hari: 0 = 90 hari lalu, 89 = hari ini)
+  uptime90: { yellow: [22, 51, 76], red: [63], avg: '99.98%' },
+
+  // EDIT DISINI: 12 fitur. badge: GRATIS / PREMIUM / EKSKLUSIF
+  features: [
+    { icon: '📱', title: 'Panel Pterodactyl', desc: 'Kelola server langsung dari HP atau PC. Start, stop, restart dan pantau console kapan saja.', badge: 'GRATIS' },
+    { icon: '🧩', title: 'Install Plugin/Mod 1 Klik', desc: 'Pilih dari 5000+ plugin dan mod. Klik install, server langsung siap tanpa upload manual.', badge: 'GRATIS' },
+    { icon: '🛡️', title: 'Anti DDoS L4/L7 1.2 Tbps', desc: 'VITBRO Shield + OVH Game Firewall menyaring serangan sebelum sampai ke server. Pemain tetap bisa main.', badge: 'PREMIUM' },
+    { icon: '💾', title: 'Backup Otomatis Harian', desc: 'Backup jalan otomatis tiap hari. Restore 1 klik dan download backup kapan saja.', badge: 'GRATIS' },
+    { icon: '🌐', title: 'Subdomain & Domain Gratis', desc: 'Dapat subdomain gratis namamu.vitbro.id. Paket PRO ke atas dapat domain .my.id gratis.', badge: 'GRATIS' },
+    { icon: '🗄️', title: 'Database MySQL Unlimited', desc: 'Buat database MySQL tanpa batas untuk plugin seperti LuckPerms dan CoreProtect. Tanpa biaya tambahan.', badge: 'GRATIS' },
+    { icon: '🎮', title: 'Java + Bedrock Crossplay', desc: 'GeyserMC + Floodgate sudah siap pakai. Teman di HP dan PC bisa main di server yang sama.', badge: 'GRATIS' },
+    { icon: '🔁', title: 'Ganti Versi 1 Klik', desc: 'Paper, Purpur, Spigot, Forge, Fabric, Velocity, BungeeCord. Pindah versi tanpa reinstall manual.', badge: 'GRATIS' },
+    { icon: '📂', title: 'File Manager + SFTP', desc: 'File manager di browser, akses SFTP/FTP dan console realtime. Edit config langsung dari panel.', badge: 'GRATIS' },
+    { icon: '📍', title: 'Dedicated IP', desc: 'IP khusus tanpa port untuk server kamu. Tersedia di paket SULTAN ke atas.', badge: 'EKSKLUSIF' },
+    { icon: '⚡', title: 'Optimasi TPS', desc: 'Konfigurasi Paper dan Aikar flags dioptimasi tim kami. Garansi TPS 19+ atau gratis 1 minggu.', badge: 'PREMIUM' },
+    { icon: '🎧', title: 'Support 24/7 <5 Menit', desc: 'CS siap via WA 0821-8759-054 dan Discord. Rata-rata balas kurang dari 5 menit, termasuk dini hari.', badge: 'GRATIS' }
+  ],
+
+  // EDIT DISINI: Logs DDoS
+  ddos: {
+    month: 1284, max: 24.7, year: 14892,
+    filters: ['Semua', 'SG-1', 'ID-1', 'SG-2'],
+    types: ['UDP Flood', 'TCP SYN Flood', 'Bot Attack', 'Amplification', 'HTTP Flood', 'Ping Flood'],
+    logs: [
+      { time: '12 Nov 2026 14:22:10', node: 'SG-1', type: 'UDP Flood',     power: '12.4 Gbps',  dur: '4m 12s' },
+      { time: '12 Nov 2026 11:05:33', node: 'ID-1', type: 'TCP SYN Flood', power: '8.1 Gbps',   dur: '2m 47s' },
+      { time: '11 Nov 2026 23:41:12', node: 'SG-1', type: 'Bot Attack',    power: '45000 RPS',  dur: '11m 05s' },
+      { time: '11 Nov 2026 18:12:45', node: 'ID-1', type: 'Amplification', power: '18.9 Gbps',  dur: '6m 30s' },
+      { time: '11 Nov 2026 07:58:19', node: 'SG-2', type: 'HTTP Flood',    power: '32000 RPS',  dur: '3m 18s' },
+      { time: '10 Nov 2026 21:14:02', node: 'ID-1', type: 'Ping Flood',    power: '2.3 Gbps',   dur: '1m 40s' },
+      { time: '10 Nov 2026 09:30:22', node: 'SG-1', type: 'UDP Flood',     power: '24.7 Gbps',  dur: '9m 52s' },
+      { time: '09 Nov 2026 16:47:55', node: 'SG-2', type: 'TCP SYN Flood', power: '6.6 Gbps',   dur: '2m 03s' },
+      { time: '09 Nov 2026 02:11:38', node: 'SG-1', type: 'Amplification', power: '15.2 Gbps',  dur: '5m 21s' },
+      { time: '08 Nov 2026 19:36:04', node: 'ID-1', type: 'Bot Attack',    power: '27500 RPS',  dur: '7m 44s' }
+    ]
+  },
+
+  // EDIT DISINI: Diskon durasi
+  durations: [
+    { months: 1,  label: 'Bulanan',  disc: 0 },
+    { months: 3,  label: '3 Bulan',  disc: 10 },
+    { months: 6,  label: '6 Bulan',  disc: 15 },
+    { months: 12, label: 'Tahunan',  disc: 25 }
+  ],
+
+  // EDIT DISINI: Paket harga
+  plans: [
+    {
+      id: 'STARTER', ram: '2GB', price: 20000, icon: '🌱', tag: 'Untuk pemula & main bareng teman',
+      features: ['2GB RAM DDR5', '15 Player', '20GB NVMe', '1 Database', 'Panel Pterodactyl', 'Anti DDoS Basic', 'Support 24/7']
+    },
+    {
+      id: 'PRO', ram: '4GB', price: 38000, icon: '🚀', tag: 'Paling cocok untuk SMP & survival', popular: true, sold: 812,
+      features: ['4GB RAM DDR5', '35 Player', '40GB NVMe', 'Free Subdomain + Free Domain .my.id', 'Backup Harian', 'Database Unlimited', 'Anti DDoS Pro', 'Prioritas Support']
+    },
+    {
+      id: 'SULTAN', ram: '8GB', price: 72000, icon: '👑', tag: 'Untuk server publik & modpack',
+      features: ['8GB RAM DDR5', '80 Player', '80GB NVMe', 'Dedicated IP', 'Free Domain .my.id + .com', 'Backup Harian', 'Anti DDoS Pro', 'Support Prioritas']
+    },
+    {
+      id: 'DEWA', ram: '16GB', price: 135000, icon: '⚡', tag: 'Untuk komunitas besar & network',
+      features: ['16GB RAM DDR5', 'Unlimited Player', '150GB NVMe', 'Dedicated Node', 'Dedicated IP', 'Support VIP 1:1', 'Free Setup Plugin + Free Setup Server worth Rp 200rb']
+    }
+  ],
+
+  // EDIT DISINI: Add-on
+  addons: [
+    { name: 'Dedicated IP', price: 10000 },
+    { name: 'Extra Backup', price: 15000 },
+    { name: 'Setup Server Full', price: 25000 }
+  ],
+
+  // EDIT DISINI: Metode bayar di checkout
+  checkoutPayments: ['QRIS', 'DANA', 'OVO', 'GoPay', 'BCA'],
+
+  // EDIT DISINI: Logs pembelian
+  transactions: {
+    today: 87, month: 2412, customers: 3890,
+    datePrefix: '20261112',
+    methods: ['QRIS', 'DANA', 'OVO', 'GoPay', 'BCA', 'BRI', 'Indomaret'],
+    buyers: ['And', 'Riz', 'Fad', 'Sal', 'Bag', 'Dim', 'Kev', 'Nab', 'Yog', 'Put', 'Ari', 'Rey', 'Gil', 'Tia', 'Fer', 'Wah', 'Ilh', 'Jef', 'Nov', 'Ega'],
+    // ago = menit yang lalu
+    logs: [
+      { buyer: 'And***', plan: 'PRO',     price: 38000,  method: 'QRIS',      ago: 2,  id: '#VTB-20261112-087' },
+      { buyer: 'Riz***', plan: 'STARTER', price: 20000,  method: 'DANA',      ago: 5,  id: '#VTB-20261112-086' },
+      { buyer: 'Fad***', plan: 'SULTAN',  price: 72000,  method: 'BCA',       ago: 9,  id: '#VTB-20261112-085' },
+      { buyer: 'Sal***', plan: 'PRO',     price: 38000,  method: 'GoPay',     ago: 14, id: '#VTB-20261112-084' },
+      { buyer: 'Bag***', plan: 'DEWA',    price: 135000, method: 'BRI',       ago: 18, id: '#VTB-20261112-083' },
+      { buyer: 'Dim***', plan: 'STARTER', price: 20000,  method: 'Indomaret', ago: 23, id: '#VTB-20261112-082' },
+      { buyer: 'Kev***', plan: 'PRO',     price: 38000,  method: 'OVO',       ago: 27, id: '#VTB-20261112-081' },
+      { buyer: 'Nab***', plan: 'PRO',     price: 38000,  method: 'QRIS',      ago: 34, id: '#VTB-20261112-080' },
+      { buyer: 'Yog***', plan: 'SULTAN',  price: 72000,  method: 'DANA',      ago: 41, id: '#VTB-20261112-079' },
+      { buyer: 'Put***', plan: 'STARTER', price: 20000,  method: 'QRIS',      ago: 48, id: '#VTB-20261112-078' }
+    ]
+  },
+
+  // EDIT DISINI: Toast notifikasi rotasi
+  toasts: [
+    { name: 'Riz***', city: 'Makassar',   plan: 'PRO',     ago: '2 menit lalu' },
+    { name: 'And***', city: 'Manado',     plan: 'SULTAN',  ago: '4 menit lalu' },
+    { name: 'Nab***', city: 'Jakarta',    plan: 'STARTER', ago: '6 menit lalu' },
+    { name: 'Bag***', city: 'Surabaya',   plan: 'DEWA',    ago: '9 menit lalu' },
+    { name: 'Sal***', city: 'Bandung',    plan: 'PRO',     ago: '11 menit lalu' },
+    { name: 'Dim***', city: 'Medan',      plan: 'STARTER', ago: '15 menit lalu' },
+    { name: 'Kev***', city: 'Yogyakarta', plan: 'PRO',     ago: '18 menit lalu' }
+  ],
+
+  // EDIT DISINI: Testimoni
+  testimonials: [
+    { name: 'Andi Pratama', ig: '@andi.mc', plan: 'PRO', price: 38000, method: 'QRIS', date: '12 Nov 2026', time: '14:22',
+      text: 'Baru TF langsung server jadi, gak sampe 1 menit. Admin fast respon parah, dibantuin install plugin sampe jadi.' },
+    { name: 'Rizky Maulana', ig: '@rizky.mln', plan: 'STARTER', price: 20000, method: 'DANA', date: '09 Nov 2026', time: '19:05',
+      text: 'Buat main sama teman sekelas, anti lag padahal player 15 orang. TPS stabil 20.' },
+    { name: 'Fadhil', ig: '@fadhilcraft', plan: 'SULTAN', price: 72000, method: 'BCA', date: '05 Nov 2026', time: '10:41',
+      text: 'Pindah dari hosting lain ke VITBRO langsung kerasa bedanya. TPS stabil 20 terus, DDoS berkali-kali tetap online.' },
+    { name: 'Salsabila', ig: '@salsa.smp', plan: 'PRO', price: 38000, method: 'GoPay', date: '01 Nov 2026', time: '21:17',
+      text: 'Awalnya ragu, tapi CS-nya sabar banget ngajarin dari nol. Sekarang serverku rame 30 player.' },
+    { name: 'Bagas', ig: '@bagas.network', plan: 'DEWA', price: 135000, method: 'BRI', date: '28 Okt 2026', time: '02:08',
+      text: 'Server komunitas 100+ player aman. Support VIP-nya gila, jam 2 pagi masih dibales.' },
+    { name: 'Dimas', ig: '@dimas.mc', plan: 'STARTER', price: 20000, method: 'Indomaret', date: '20 Okt 2026', time: '16:33',
+      text: 'Harga pelajar tapi kualitas sultan. Worth it banget, udah perpanjang 3x.' }
+  ],
+
+  // EDIT DISINI: Langkah order
+  steps: [
+    { icon: '🛒', title: 'Pilih Paket & Klik Beli', time: '30 detik', desc: 'Pilih paket di bagian harga atau pakai kalkulator. Klik Beli, isi nama Minecraft.' },
+    { icon: '💳', title: 'Bayar via QRIS/DANA/OVO/GoPay/Bank/Indomaret', time: '1 menit', desc: 'Admin kirim QRIS atau nomor rekening. Bayar dari HP, tanpa kartu kredit.' },
+    { icon: '🚀', title: 'Login Panel Dikirim ke WA, Server Langsung Aktif', time: '60 detik', desc: 'Data login panel dikirim ke WhatsApp kamu dari 0821-8759-054. Server langsung bisa dimainkan.' }
+  ],
+
+  // EDIT DISINI: Contoh chat WA
+  chat: [
+    { from: 'c', text: 'Kak, mau beli paket PRO ya 🙏', time: '14:20' },
+    { from: 'a', text: 'Siap kak! Ini QRIS-nya ya, total Rp 38.000 📲', time: '14:20' },
+    { from: 'a', text: '[ QRIS VITBRO HOSTING ]', time: '14:20', qris: true },
+    { from: 'c', text: 'Sudah TF kak ✅', time: '14:21' },
+    { from: 'a', text: 'Server sudah aktif kak 🚀 ini login panelnya:\npanel.vitbrohosting.id\nuser: andi_survival\nSelamat main! 🎮', time: '14:22' }
+  ],
+
+  // EDIT DISINI: FAQ
+  faq: [
+    { q: 'Apakah bisa install mod & plugin?', a: 'Bisa banget. Di panel ada fitur install plugin 1 klik dari 5000+ plugin. Untuk mod, tinggal ganti versi ke Forge atau Fabric lalu upload modpack. Kalau bingung, CS kami bantu install gratis.' },
+    { q: 'Apakah support Bedrock HP?', a: 'Support. Semua server sudah bisa pakai GeyserMC + Floodgate, jadi teman yang main di HP (Bedrock) bisa gabung bareng pemain Java di PC. Mau server Bedrock murni juga bisa.' },
+    { q: 'Berapa lama aktivasi setelah bayar?', a: 'Rata-rata 47 detik, maksimal 60 detik setelah pembayaran dikonfirmasi. Data login panel langsung dikirim ke WhatsApp kamu.' },
+    { q: 'Apakah ada garansi refund?', a: 'Ada. Garansi 3 hari uang kembali 100% kalau server tidak jalan. Cukup chat CS, sertakan ID transaksi, dana dikembalikan ke metode bayar kamu.' },
+    { q: 'Apakah bisa upgrade paket nanti?', a: 'Bisa kapan saja tanpa hapus data. Kamu cukup bayar selisih harga sesuai sisa masa aktif. Downgrade juga bisa.' },
+    { q: 'Bagaimana cara klaim domain gratis?', a: 'Untuk paket PRO ke atas, chat CS setelah server aktif lalu kirim nama domain .my.id yang kamu mau. Kami bantu daftar dan arahkan ke server kamu. Subdomain namamu.vitbro.id bisa diatur langsung dari panel.' },
+    { q: 'Apakah server saya aman dari DDoS?', a: 'Aman. Semua node dilindungi VITBRO Shield, Cloudflare dan OVH Game Firewall dengan kapasitas mitigasi 1.2 Tbps. Log serangan yang kami blokir bisa kamu lihat sendiri di halaman ini.' },
+    { q: 'Apakah bisa bayar lewat Indomaret/Alfamart?', a: 'Bisa. Admin akan kirim kode bayar, kamu tinggal bayar di kasir Indomaret atau Alfamart terdekat. Cocok buat yang belum punya e-wallet atau rekening.' },
+    { q: 'Apakah bisa ganti lokasi node?', a: 'Bisa. Pindah dari Singapore ke Jakarta atau sebaliknya gratis 1x per bulan. Data server ikut dipindah, jadi kamu gak perlu setup ulang.' },
+    { q: 'Apakah ada trial gratis?', a: 'Ada trial 1 jam untuk paket STARTER. Chat WA 0821-8759-054 dengan kata "TRIAL", nanti admin kirim akses panelnya.', trial: true }
+  ],
+
+  // EDIT DISINI: Artikel blog
+  blog: [
+    { icon: '⚙️', cat: 'Tutorial', date: '10 Nov 2026', read: '5 menit', title: 'Cara Optimasi TPS Server Paper Agar Tetap 20', excerpt: 'Atur view-distance, simulation-distance dan Aikar flags supaya server tetap lancar meski player ramai.' },
+    { icon: '📱', cat: 'Panduan', date: '04 Nov 2026', read: '4 menit', title: 'Pasang GeyserMC: Biar Teman di HP Bisa Join', excerpt: 'Langkah demi langkah mengaktifkan crossplay Java dan Bedrock memakai GeyserMC dan Floodgate.' },
+    { icon: '🛡️', cat: 'Keamanan', date: '28 Okt 2026', read: '6 menit', title: 'Kenapa Server Minecraft Sering Kena DDoS?', excerpt: 'Pola serangan yang paling sering kami lihat di log dan cara VITBRO Shield memblokirnya.' }
+  ],
+
+  // EDIT DISINI: Kebijakan
+  policies: {
+    tos: { title: 'Terms of Service', body: [
+      'Dengan memesan layanan VITBRO HOSTING, kamu setuju menggunakan server sesuai hukum yang berlaku di Indonesia.',
+      'Dilarang memakai server untuk aktivitas ilegal, mining kripto, serangan DDoS, phishing atau menyimpan konten yang melanggar hukum.',
+      'Satu akun panel hanya untuk satu pemilik. Pembagian akses dilakukan lewat fitur subuser di panel.',
+      'Layanan yang tidak diperpanjang akan disuspend 1 hari setelah jatuh tempo dan dihapus 7 hari setelahnya.'
+    ]},
+    privacy: { title: 'Privacy Policy', body: [
+      'Kami hanya menyimpan data yang dibutuhkan untuk layanan: nama, nomor WhatsApp, email dan riwayat transaksi.',
+      'Data tidak dijual atau dibagikan ke pihak ketiga, kecuali diminta oleh aparat penegak hukum sesuai ketentuan.',
+      'Nama pembeli di logs transaksi publik selalu disensor (contoh: And***).',
+      'Kamu bisa meminta penghapusan data dengan menghubungi support@vitbrohosting.id.'
+    ]},
+    refund: { title: 'Refund Policy', body: [
+      'Garansi 3 hari uang kembali 100% jika server tidak bisa berjalan karena kendala dari sisi kami.',
+      'Pengajuan refund dilakukan via WhatsApp 0821-8759-054 dengan menyertakan ID transaksi.',
+      'Dana dikembalikan ke metode pembayaran asal dalam 1x24 jam kerja.',
+      'Refund tidak berlaku untuk pelanggaran Terms of Service atau server yang sudah dipakai lebih dari 3 hari.'
+    ]},
+    sla: { title: 'Service Level Agreement (SLA)', body: [
+      'VITBRO menjamin uptime jaringan dan node minimal 99.9% per bulan.',
+      'Jika uptime di bawah 99.9%, kamu berhak atas kompensasi perpanjangan gratis: di bawah 99.9% = 3 hari, di bawah 99.5% = 7 hari, di bawah 99% = 14 hari.',
+      'Maintenance terjadwal diumumkan minimal 24 jam sebelumnya lewat Discord dan status.vitbrohosting.id, dan tidak dihitung sebagai downtime.',
+      'Garansi TPS 19+ berlaku untuk server dengan konfigurasi standar dari kami. Jika tidak tercapai, kamu dapat gratis 1 minggu.'
+    ]}
+  },
+
+  // EDIT DISINI: Data simulasi Client Area
+  client: {
+    user: 'Andi',
+    servers: [
+      { name: 'andi_survival', status: 'ONLINE', node: 'SG-1', plan: 'PRO 4GB', players: '12/35', expire: '12 Des 2026', ip: 'andi.vitbro.id', version: 'Paper 1.21.1' },
+      { name: 'andi_creative', status: 'OFFLINE', node: 'ID-1', plan: 'STARTER 2GB', players: '0/15', expire: '03 Des 2026', ip: 'andicreative.vitbro.id', version: 'Purpur 1.21.1' }
+    ],
+    invoices: [
+      { id: 'INV-001', desc: 'Paket PRO 4GB - 1 Bulan (andi_survival)', amount: 38000, date: '12 Nov 2026', status: 'LUNAS' },
+      { id: 'INV-002', desc: 'Perpanjangan PRO 4GB - 1 Bulan (andi_survival)', amount: 38000, date: '12 Des 2026', status: 'MENUNGGU' }
+    ],
+    tickets: [
+      { id: '#123', subject: 'Plugin error', dept: 'Teknis', status: 'Dibalas', last: '3 menit lalu' },
+      { id: '#118', subject: 'Cara pasang GeyserMC', dept: 'Teknis', status: 'Selesai', last: '2 hari lalu' }
+    ]
+  }
+};
+
+/* =============================================================
+   HELPER
+   ============================================================= */
+const $  = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const rp = n => 'Rp ' + Math.round(n).toLocaleString('id-ID');
+const rand = (a, b) => Math.random() * (b - a) + a;
+const randInt = (a, b) => Math.floor(rand(a, b + 1));
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+const pad = n => String(n).padStart(2, '0');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const wa = msg => `https://wa.me/${CONFIG.brand.wa}?text=${encodeURIComponent(msg)}`;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+
+// Format waktu WIB: "12 Nov 2026 14:22:10"
+function fmtWIB(d = new Date()) {
+  const p = {};
+  new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', year: 'numeric', month: 'numeric', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
+    .formatToParts(d).forEach(x => p[x.type] = x.value);
+  return { full: `${p.day} ${MONTHS[+p.month - 1]} ${p.year} ${p.hour}:${p.minute}:${p.second}`, time: `${p.hour}:${p.minute}:${p.second}`, ymd: `${p.year}${pad(p.month)}${p.day}` };
+}
+// "x menit lalu"
+function ago(ts) {
+  const s = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+  if (s < 45) return 'baru saja';
+  const m = Math.round(s / 60);
+  if (m < 60) return `${m} menit lalu`;
+  return `${Math.floor(m / 60)} jam lalu`;
+}
+
+/* =============================================================
+   WHATSAPP LINKS (semua elemen data-wa)
+   ============================================================= */
+function initWaLinks() {
+  $$('[data-wa]').forEach(el => {
+    const msg = CONFIG.waMessages[el.dataset.wa] || el.dataset.wa;
+    el.href = wa(msg);
+  });
+}
+
+/* =============================================================
+   0. TOP BAR MARQUEE
+   ============================================================= */
+function renderTopMarquee() {
+  const items = CONFIG.marquee.map(t => `<span class="px-6">${esc(t)}</span><span class="text-white/40">|</span>`).join('');
+  $('#topMarquee').innerHTML = items + items; // duplikat agar looping mulus
+}
+
+/* =============================================================
+   1. NAVBAR (hamburger, shadow saat scroll, active menu)
+   ============================================================= */
+function initNavbar() {
+  const menu = $('#mobileMenu');
+  const icon = $('#burgerIcon');
+  $('#burger').addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden') === false;
+    icon.innerHTML = open ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
+  });
+  $$('.m-link', menu).forEach(a => a.addEventListener('click', () => { menu.classList.add('hidden'); icon.innerHTML = '<path d="M4 7h16M4 12h16M4 17h16"/>'; }));
+  window.addEventListener('scroll', () => $('#navbar').classList.toggle('shadow-2xl', window.scrollY > 10), { passive: true });
+
+  // Highlight menu aktif
+  const links = $$('#navMenu a');
+  const sections = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.toggle('text-white', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+}
+
+/* =============================================================
+   2. HERO: pembayaran, console typing, stats live, tombol power
+   ============================================================= */
+function renderHeroPayments() {
+  $('#heroPayments').innerHTML = CONFIG.payments.map(p => `<span class="text-[11px] font-semibold px-2.5 py-1 rounded-md bg-card border border-line text-mute">${esc(p)}</span>`).join('');
+}
+
+const consoleEl = () => $('#console');
+let serverState = 'running';
+
+function consoleLine(html, cls = '') {
+  const el = consoleEl();
+  const div = document.createElement('div');
+  div.className = cls;
+  div.innerHTML = html;
+  el.appendChild(div);
+  while (el.children.length > 13) el.removeChild(el.firstChild);
+  el.scrollTop = el.scrollHeight;
+  return div;
+}
+const ts = () => `<span class="text-dim">[${fmtWIB().time} INFO]:</span> `;
+
+// Animasi ketik otomatis
+function typeLine(text, cls, speed = 14) {
+  return new Promise(res => {
+    const el = consoleLine(ts(), cls);
+    const span = document.createElement('span');
+    el.appendChild(span);
+    let i = 0;
+    const t = setInterval(() => {
+      span.textContent = text.slice(0, ++i);
+      el.parentElement.scrollTop = el.parentElement.scrollHeight;
+      if (i >= text.length) { clearInterval(t); res(); }
+    }, speed);
+  });
+}
+
+async function bootConsole() {
+  consoleEl().innerHTML = '';
+  const lines = [
+    ['Starting minecraft server version 1.21.1', ''],
+    ['Loading properties', ''],
+    ['Default game type: SURVIVAL', ''],
+    ['Starting Minecraft server on *:25565', ''],
+    ['Using epoll channel type', ''],
+    ['Preparing level "world"', ''],
+    ['Preparing spawn area: 100%', 'text-brand2'],
+    ['[Geyser-Spigot] Started Geyser on 0.0.0.0:19132', 'text-blue-400'],
+    ['Done (3.21s)! For help, type "help"', 'text-lime2 font-semibold']
+  ];
+  for (const [t, c] of lines) { await typeLine(t, c); await new Promise(r => setTimeout(r, 160)); }
+}
+
+const PLAYER_NAMES = ['Steve_ID', 'andi_pro', 'Rizky123', 'salsa_mc', 'Bagas_Gamer', 'dimas07', 'NabilaXD', 'kevinn', 'yoga_smp', 'putri.mc'];
+const EVENTS = [
+  n => `<span class="text-on">${n} joined the game</span>`,
+  n => `<span class="text-mute">${n} left the game</span>`,
+  n => `&lt;${n}&gt; gas mabar nether`,
+  n => `<span class="text-mt">${n} has made the advancement [Diamonds!]</span>`,
+  () => `<span class="text-brand2">[VITBRO Shield] Blocked 1,204 malicious packets</span>`,
+  () => `Saving the game (this may take a moment!)`,
+  () => `<span class="text-lime2">[Backup] Auto backup completed (1.2GB) ✔</span>`
+];
+function consoleLiveLoop() {
+  setInterval(() => {
+    if (serverState !== 'running') return;
+    const ev = pick(EVENTS);
+    consoleLine(ts() + ev(pick(PLAYER_NAMES)));
+  }, 2600);
+}
+
+// Stats panel live
+let mockUptimeMin = 12 * 1440 + 4 * 60 + 13;
+function heroStatsLoop() {
+  setInterval(() => {
+    if (serverState !== 'running') return;
+    const cpu = randInt(24, 46);
+    const ram = rand(2.6, 3.1);
+    $('#mCpu').textContent = cpu + '%';
+    $('#mCpuBar').style.width = cpu + '%';
+    $('#mRam').textContent = ram.toFixed(1);
+    $('#mRamBar').style.width = (ram / 4 * 100) + '%';
+    $('#mPlayers').textContent = Math.max(8, Math.min(16, +$('#mPlayers').textContent + randInt(-1, 1)));
+    const tps = Math.random() > .85 ? 19.9 : 20.0;
+    $('#mTps').textContent = tps.toFixed(1);
+  }, 1800);
+  setInterval(() => {
+    if (serverState !== 'running') return;
+    mockUptimeMin++;
+    renderMockUptime();
+  }, 60000);
+  renderMockUptime();
+}
+function renderMockUptime() {
+  const d = Math.floor(mockUptimeMin / 1440), h = Math.floor(mockUptimeMin % 1440 / 60), m = mockUptimeMin % 60;
+  $('#mUptime').textContent = `${d}d ${h}h ${m}m`;
+}
+
+// Tombol Start / Restart / Stop (simulasi)
+function setMockStatus(state) {
+  serverState = state;
+  const map = {
+    running:  ['RUNNING', 'bg-on/15 text-on border-on/30', 'bg-on'],
+    starting: ['STARTING', 'bg-mt/15 text-mt border-mt/30', 'bg-mt'],
+    stopping: ['STOPPING', 'bg-mt/15 text-mt border-mt/30', 'bg-mt'],
+    offline:  ['OFFLINE', 'bg-off/15 text-off border-off/30', 'bg-off']
+  }[state];
+  const el = $('#mockStatus');
+  el.className = `text-xs px-2.5 py-1 rounded-full border flex items-center gap-1.5 ${map[1]}`;
+  el.innerHTML = `<span class="dot ${map[2]}"></span><span>${map[0]}</span>`;
+}
+function initPowerButtons() {
+  $$('[data-power]').forEach(btn => btn.addEventListener('click', async () => {
+    const act = btn.dataset.power;
+    if (act === 'stop') {
+      if (serverState === 'offline') return;
+      setMockStatus('stopping');
+      consoleLine(ts() + '<span class="text-off">Stopping server...</span>');
+      await new Promise(r => setTimeout(r, 900));
+      consoleLine(ts() + 'Saving worlds... Closing Server');
+      setMockStatus('offline');
+      $('#mCpu').textContent = '0%'; $('#mCpuBar').style.width = '0%';
+      $('#mPlayers').textContent = '0'; $('#mTps').textContent = '-';
+    } else if (act === 'start' || act === 'restart') {
+      if (act === 'start' && serverState === 'running') { consoleLine(ts() + '<span class="text-mt">Server is already running.</span>'); return; }
+      setMockStatus('starting');
+      if (act === 'restart') consoleLine(ts() + '<span class="text-mt">Restarting server...</span>');
+      await bootConsole();
+      $('#mPlayers').textContent = '12';
+      if (act === 'restart') mockUptimeMin = 0;
+      renderMockUptime();
+      setMockStatus('running');
+    }
+  }));
+}
+
+/* =============================================================
+   3. TRUST BAR: partner + count-up
+   ============================================================= */
+function renderPartners() {
+  $('#partners').innerHTML = CONFIG.partners.map(p => `<span class="font-head font-semibold text-mute hover:text-white transition text-sm sm:text-base">${esc(p)}</span>`).join('');
+}
+function countUp(el) {
+  const target = parseFloat(el.dataset.count);
+  const dec = parseInt(el.dataset.dec || '0', 10);
+  const dur = 1600, start = performance.now();
+  const step = now => {
+    const p = Math.min(1, (now - start) / dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = (target * eased).toLocaleString('id-ID', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    if (p < 1) requestAnimationFrame(step); else el.dataset.done = '1';
+  };
+  requestAnimationFrame(step);
+}
+// Angka trust bar bertambah pelan agar terlihat live
+const liveStats = { ...CONFIG.stats };
+function trustLiveLoop() {
+  setInterval(() => {
+    if (Math.random() > .5) { liveStats.servers++; setStat('#statServers', liveStats.servers); }
+    if (Math.random() > .7) { liveStats.customers++; setStat('#statCustomers', liveStats.customers); }
+  }, 9000);
+}
+function setStat(sel, val) {
+  const el = $(sel);
+  el.dataset.count = val;
+  if (el.dataset.done) el.textContent = val.toLocaleString('id-ID');
+}
+
+/* =============================================================
+   4. KALKULATOR HARGA
+   ============================================================= */
+function initCalculator() {
+  const c = CONFIG.calculator;
+  $('#calcRam').max = c.tiers.length - 1;
+  $('#calcRamTicks').innerHTML = c.tiers.map(t => `<span>${t.ram}GB</span>`).join('');
+  $('#calcVersion').innerHTML = c.versions.map(v => `<option value="${esc(v.id)}">${esc(v.id)}</option>`).join('');
+  $('#calcLoc').innerHTML = CONFIG.locations.map(l => `<option value="${l.id}">${l.flag} ${esc(l.name)} - Ping ${l.ping}ms</option>`).join('');
+  ['input', 'change'].forEach(ev => {
+    $('#calcRam').addEventListener(ev, updateCalc);
+    $('#calcVersion').addEventListener(ev, updateCalc);
+    $('#calcLoc').addEventListener(ev, updateCalc);
+  });
+  updateCalc();
+}
+function updateCalc() {
+  const c = CONFIG.calculator;
+  const t = c.tiers[+$('#calcRam').value];
+  const v = c.versions.find(x => x.id === $('#calcVersion').value);
+  const loc = CONFIG.locations.find(l => l.id === $('#calcLoc').value);
+  const pct = (+$('#calcRam').value / (c.tiers.length - 1)) * 100;
+  $('#calcRam').style.background = `linear-gradient(90deg,#7C3AED ${pct}%,#2A2A3F ${pct}%)`;
+  $('#calcRamLabel').textContent = t.ram + 'GB';
+  $('#calcPrice').textContent = rp(t.price);
+  $('#calcPlanName').textContent = t.plan === 'CUSTOM' ? 'Paket custom (konfirmasi via WA)' : `Setara paket ${t.plan}`;
+  $('#calcPlayers').textContent = t.players;
+  $('#calcStorage').textContent = t.storage + ' NVMe';
+  $('#calcTps').textContent = t.tps;
+  $('#calcPing').textContent = `~${loc.ping}ms`;
+  let rec = t.rec;
+  if (v.heavy && t.ram < 8) rec = `Forge butuh RAM lebih besar. Disarankan minimal 8GB (SULTAN) untuk modpack.`;
+  if (v.id === 'Bedrock') rec = `Server Bedrock ${t.players} - cocok untuk main dari HP/Console.`;
+  $('#calcRec').textContent = rec;
+  $('#calcVersionNote').textContent = '📝 ' + v.note;
+  $('#calcBuy').href = wa(`Halo VITBRO saya mau beli paket ${t.plan} ${t.ram}GB RAM Rp ${t.price}/bulan, versi ${v.id}, lokasi ${loc.name}. Hasil dari kalkulator website.`);
+}
+
+/* =============================================================
+   5. TABEL PERBANDINGAN
+   ============================================================= */
+function renderComparison() {
+  $('#compareBody').innerHTML = CONFIG.comparison.map((r, i) => `
+    <tr class="border-t border-line ${i % 2 ? 'bg-card/40' : ''}">
+      <td class="p-4 text-mute">${esc(r[0])}</td>
+      <td class="p-4 text-center font-semibold bg-brand/10 border-x border-brand/40 text-white"><span class="inline-flex items-center gap-1.5"><span class="text-on">✔</span>${esc(r[1])}</span></td>
+      <td class="p-4 text-center text-mute">${esc(r[2])}</td>
+      <td class="p-4 text-center text-dim">${esc(r[3])}</td>
+    </tr>`).join('');
+}
+
+/* =============================================================
+   6. STATUS NODE
+   ============================================================= */
+const nodeState = {};
+function nodeBars(n) {
+  let html = '';
+  for (let i = 0; i < n.bars; i++) {
+    const c = n.redAt.includes(i) ? 'bg-off' : n.yellowAt.includes(i) ? 'bg-mt' : 'bg-on';
+    html += `<span title="Hari ke-${i + 1}" class="flex-1 h-7 rounded-sm ${c} opacity-90 hover:opacity-100"></span>`;
+  }
+  return `<div class="flex gap-[2px] mt-1">${html}</div><div class="flex justify-between text-[10px] text-dim mt-1"><span>30 hari lalu</span><span>Hari ini</span></div>`;
+}
+function meter(label, valHtml, pct, color, id) {
+  return `<div><div class="flex justify-between text-xs"><span class="text-dim">${label}</span><span ${id ? `id="${id}-t"` : ''} class="text-white">${valHtml}</span></div>
+    <div class="h-1.5 bg-line rounded-full mt-1 overflow-hidden"><div ${id ? `id="${id}-b"` : ''} class="bar h-full rounded-full ${color}" style="width:${pct}%"></div></div></div>`;
+}
+function renderNodes() {
+  $('#nodeGrid').innerHTML = CONFIG.nodes.map((n, idx) => {
+    const key = n.id.replace(/\W/g, '');
+    let statusBadge, body;
+    if (n.status === 'online') {
+      nodeState[key] = { ping: Math.round((n.pingMin + n.pingMax) / 2), cpu: n.cpu, ram: n.ram[0] };
+      statusBadge = `<span class="text-xs px-2.5 py-1 rounded-full bg-on/15 text-on border border-on/30 flex items-center gap-1.5"><span class="dot bg-on"></span>ONLINE</span>`;
+      body = `
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Uptime</p><p class="font-head font-bold text-on">${n.uptime}</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Ping</p><p class="font-head font-bold text-lime2"><span id="${key}-ping">${nodeState[key].ping}</span>ms</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Slot</p><p class="font-head font-bold">${n.slots[0]}/${n.slots[1]}</p></div>
+        </div>
+        <div class="space-y-3 mt-4">
+          ${meter('CPU', n.cpu + '%', n.cpu, 'bg-brand', key + '-cpu')}
+          ${meter(`RAM ${n.ramType}`, `${n.ram[0]}/${n.ram[1]}GB`, n.ram[0] / n.ram[1] * 100, 'bg-blue2', key + '-ram')}
+          ${meter(`Disk ${n.diskType}`, `${n.disk[0]}/${n.disk[1]}GB`, n.disk[0] / n.disk[1] * 100, 'bg-lime2')}
+          ${meter('Slot Terpakai', `${n.slots[0]}/${n.slots[1]}`, n.slots[0] / n.slots[1] * 100, 'bg-brand2')}
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-4 text-xs">
+          <div><p class="text-dim">CPU</p><p>${esc(n.cpuModel)}</p></div>
+          <div><p class="text-dim">Provider</p><p>${esc(n.provider)}</p></div>
+          <div><p class="text-dim">Lokasi</p><p>${esc(n.location)}</p></div>
+        </div>
+        <div class="mt-4"><p class="text-xs text-dim">Uptime 30 hari</p>${nodeBars(n)}</div>
+        <div class="mt-4 flex items-center justify-between gap-2 text-xs">
+          <span class="text-dim">History incident: <span class="text-mt">${esc(n.incidents)}</span></span>
+          <button data-node="${idx}" class="px-3 py-2 rounded-lg border border-line hover:border-brand2 text-white">Detail Node →</button>
+        </div>`;
+    } else if (n.status === 'maintenance') {
+      statusBadge = `<span class="text-xs px-2.5 py-1 rounded-full bg-mt/15 text-mt border border-mt/30 flex items-center gap-1.5"><span class="dot bg-mt"></span>MAINTENANCE</span>`;
+      body = `
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Uptime</p><p class="font-head font-bold text-on">${n.uptime}</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Ping</p><p class="font-head font-bold text-dim">-</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Slot</p><p class="font-head font-bold">${n.slots[0]}/${n.slots[1]}</p></div>
+        </div>
+        <div class="mt-4 rounded-xl border border-mt/30 bg-mt/10 p-4">
+          <p class="text-sm font-semibold text-mt">🔧 ${esc(n.maintenance.msg)}</p>
+          <p class="text-xs text-mute mt-1">Estimasi Selesai <b class="text-white">${esc(n.maintenance.eta)}</b> • Server pelanggan dipindah sementara ke SG-1, tetap online.</p>
+          <div class="flex justify-between text-xs mt-3"><span class="text-dim">Progress</span><span id="${key}-mtp" class="text-white">${n.maintenance.progress}%</span></div>
+          <div class="h-2.5 bg-line rounded-full mt-1 overflow-hidden"><div id="${key}-mtb" class="bar bar-stripe h-full rounded-full bg-mt" style="width:${n.maintenance.progress}%"></div></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 mt-4 text-xs">
+          <div><p class="text-dim">CPU</p><p>${esc(n.cpuModel)}</p></div>
+          <div><p class="text-dim">Provider</p><p>${esc(n.provider)}</p></div>
+          <div><p class="text-dim">Lokasi</p><p>${esc(n.location)}</p></div>
+        </div>
+        <div class="mt-4"><p class="text-xs text-dim">Uptime 30 hari</p>${nodeBars(n)}</div>
+        <div class="mt-4 flex justify-end"><button data-node="${idx}" class="px-3 py-2 text-xs rounded-lg border border-line hover:border-brand2">Detail Node →</button></div>`;
+      nodeState[key] = { mt: n.maintenance.progress };
+    } else {
+      statusBadge = `<span class="text-xs px-2.5 py-1 rounded-full bg-brand/15 text-brand2 border border-brand/40 flex items-center gap-1.5"><span class="dot bg-brand2"></span>COMING SOON</span>`;
+      body = `
+        <div class="grid grid-cols-3 gap-2 mt-4 text-center">
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Uptime</p><p class="font-head font-bold text-dim">-</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">RAM</p><p class="font-head font-bold">${n.ram[1]}GB</p></div>
+          <div class="bg-bg rounded-xl border border-line p-2.5"><p class="text-[11px] text-dim">Slot</p><p class="font-head font-bold">${n.slots[0]}/${n.slots[1]}</p></div>
+        </div>
+        <div class="mt-4 rounded-xl border border-brand/40 bg-gradient-to-br from-brand/20 to-blue2/10 p-5 text-center">
+          <p class="text-4xl">🚧</p>
+          <p class="font-head font-bold text-lg mt-2">Rilis ${esc(n.soon.release)}</p>
+          <p class="text-lime2 font-semibold mt-1">${esc(n.soon.promo)}</p>
+          <p class="text-xs text-mute mt-2">${esc(n.cpuModel)} • ${n.ramType} ${n.ram[1]}GB • ${n.diskType} ${n.disk[1]}GB • ${esc(n.provider)}</p>
+          <a href="${wa(CONFIG.waMessages.preorder)}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 font-semibold text-sm px-5 py-2.5 rounded-xl btn-grad">Pre-Order Sekarang</a>
+        </div>`;
+    }
+    return `
+      <div class="fade-up glass rounded-2xl p-5 sm:p-6 hover-lift ${n.status === 'maintenance' ? 'border-mt/30' : ''}">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="font-head font-bold text-lg">${n.flag} ${esc(n.name)}</p>
+            <p class="text-xs text-dim">${esc(n.provider)} • ${esc(n.location)}</p>
+          </div>
+          ${statusBadge}
+        </div>
+        ${body}
+      </div>`;
+  }).join('');
+
+  $$('[data-node]').forEach(b => b.addEventListener('click', () => openNodeModal(CONFIG.nodes[+b.dataset.node])));
+}
+
+// Update angka node: ping/cpu/ram bergerak tiap 3 detik, label "update tiap 30 detik"
+let nodeCountdown = 30;
+function nodesLiveLoop() {
+  const stamp = () => $('#nodeUpdated').textContent = fmtWIB().time;
+  stamp();
+  setInterval(() => {
+    CONFIG.nodes.forEach(n => {
+      const key = n.id.replace(/\W/g, '');
+      const s = nodeState[key];
+      if (n.status === 'online' && s) {
+        s.ping = randInt(n.pingMin, n.pingMax);
+        s.cpu = Math.max(15, Math.min(90, s.cpu + randInt(-6, 6)));
+        s.ram = Math.max(n.ram[0] - 6, Math.min(n.ram[0] + 6, s.ram + randInt(-1, 1)));
+        $(`#${key}-ping`).textContent = s.ping;
+        $(`#${key}-cpu-t`).textContent = s.cpu + '%';
+        $(`#${key}-cpu-b`).style.width = s.cpu + '%';
+        $(`#${key}-ram-t`).textContent = `${s.ram}/${n.ram[1]}GB`;
+        $(`#${key}-ram-b`).style.width = (s.ram / n.ram[1] * 100) + '%';
+      }
+    });
+  }, 3000);
+  setInterval(() => {
+    nodeCountdown--;
+    if (nodeCountdown <= 0) {
+      nodeCountdown = 30;
+      stamp();
+      // Progress maintenance naik pelan sampai 99%
+      CONFIG.nodes.filter(n => n.status === 'maintenance').forEach(n => {
+        const key = n.id.replace(/\W/g, '');
+        nodeState[key].mt = Math.min(99, nodeState[key].mt + 1);
+        $(`#${key}-mtp`).textContent = nodeState[key].mt + '%';
+        $(`#${key}-mtb`).style.width = nodeState[key].mt + '%';
+      });
+    }
+    $('#nodeNext').textContent = nodeCountdown;
+  }, 1000);
+}
+
+function openNodeModal(n) {
+  $('#nmTitle').textContent = `${n.flag} ${n.name}`;
+  const statusTxt = { online: '<span class="text-on">ONLINE</span>', maintenance: '<span class="text-mt">MAINTENANCE</span>', soon: '<span class="text-brand2">COMING SOON</span>' }[n.status];
+  const rows = [
+    ['Status', statusTxt],
+    ['IP Node', `<span class="font-mono">${esc(n.ip)}</span>`],
+    ['Uptime 90 hari', esc(n.uptime)],
+    ['Ping', n.pingMin ? `${n.pingMin}-${n.pingMax}ms` : '-'],
+    ['CPU', esc(n.cpuModel)],
+    ['RAM', `${n.ram[1]}GB ${n.ramType}`],
+    ['Disk', `${n.disk[1]}GB ${n.diskType}`],
+    ['Slot', `${n.slots[0]}/${n.slots[1]}`],
+    ['Provider', esc(n.provider)],
+    ['Lokasi', esc(n.location)],
+    ['Proteksi', 'VITBRO Shield + Cloudflare + OVH Game Firewall'],
+    ['History incident', esc(n.incidents)]
+  ];
+  $('#nmBody').innerHTML = `
+    <div class="rounded-xl border border-line divide-y divide-line">
+      ${rows.map(r => `<div class="flex justify-between gap-4 px-4 py-2.5"><span class="text-dim">${r[0]}</span><span class="text-right">${r[1]}</span></div>`).join('')}
+    </div>
+    ${n.incidentList ? `<div><p class="font-semibold mt-2 mb-2">Riwayat Incident</p><ul class="space-y-1.5 text-xs text-mute">${n.incidentList.map(i => `<li class="flex gap-2"><span class="text-mt">●</span>${esc(i)}</li>`).join('')}</ul></div>` : ''}
+    <a href="${CONFIG.brand.statusPage}" target="_blank" rel="noopener" class="block text-center mt-2 px-4 py-2.5 rounded-xl border border-line hover:border-brand2">Lihat di Status Page ↗</a>`;
+  openModal('#nodeModal');
+}
+
+// Grafik uptime 90 hari
+function renderUptime90() {
+  const u = CONFIG.uptime90;
+  let html = '';
+  for (let i = 0; i < 90; i++) {
+    let val, cls;
+    if (u.red.includes(i)) { val = 98.9; cls = 'bg-off'; }
+    else if (u.yellow.includes(i)) { val = +(99.5 + Math.random() * .3).toFixed(2); cls = 'bg-mt'; }
+    else { val = +(99.95 + Math.random() * .05).toFixed(2); cls = 'bg-on'; }
+    const h = 30 + ((val - 98.5) / 1.5) * 70;
+    html += `<div class="vbar flex-1 rounded-t-sm ${cls}" data-h="${h}" style="height:0%" title="${90 - i} hari lalu: ${val}%"></div>`;
+  }
+  $('#uptime90').innerHTML = html;
+  $('#uptime90Avg').textContent = u.avg;
+  const io = new IntersectionObserver(es => {
+    if (es[0].isIntersecting) {
+      $$('#uptime90 .vbar').forEach((b, i) => setTimeout(() => b.style.height = b.dataset.h + '%', i * 8));
+      io.disconnect();
+    }
+  }, { threshold: .3 });
+  io.observe($('#uptime90'));
+}
+
+/* =============================================================
+   7. FITUR
+   ============================================================= */
+function renderFeatures() {
+  const badgeCls = { GRATIS: 'bg-on/15 text-on border-on/30', PREMIUM: 'bg-brand/20 text-brand2 border-brand/40', EKSKLUSIF: 'bg-mt/15 text-mt border-mt/30' };
+  $('#featureGrid').innerHTML = CONFIG.features.map((f, i) => `
+    <div class="fade-up glass rounded-2xl p-5 hover-lift relative overflow-hidden group" style="transition-delay:${(i % 4) * 60}ms">
+      <div class="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-brand/10 blur-2xl group-hover:bg-brand/25 transition"></div>
+      <div class="relative flex items-start justify-between">
+        <span class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand/30 to-blue2/20 border border-brand/30 grid place-items-center text-2xl">${f.icon}</span>
+        <span class="text-[10px] font-bold tracking-wider px-2 py-1 rounded-md border ${badgeCls[f.badge] || badgeCls.GRATIS}">${esc(f.badge)}</span>
+      </div>
+      <h3 class="relative font-head font-bold mt-4">${i + 1}. ${esc(f.title)}</h3>
+      <p class="relative text-sm text-mute mt-2 leading-relaxed">${esc(f.desc)}</p>
+    </div>`).join('');
+}
+
+/* =============================================================
+   8. LOGS DDOS
+   ============================================================= */
+let ddFilter = 'Semua';
+const ddLogs = CONFIG.ddos.logs.map(l => ({ ...l }));
+const ddStats = { month: CONFIG.ddos.month, year: CONFIG.ddos.year, max: CONFIG.ddos.max };
+function renderDdosFilter() {
+  $('#ddFilter').innerHTML = `<span class="text-xs text-dim mr-1">Filter:</span>` + CONFIG.ddos.filters.map(f =>
+    `<button data-dd="${esc(f)}" class="tab-btn text-xs px-3.5 py-2 rounded-lg border border-line bg-card ${f === ddFilter ? 'active' : ''}">${esc(f)}</button>`).join('');
+  $$('[data-dd]').forEach(b => b.addEventListener('click', () => { ddFilter = b.dataset.dd; renderDdosFilter(); renderDdos(); }));
+}
+function renderDdos(flashFirst = false) {
+  const rows = ddLogs.filter(l => ddFilter === 'Semua' || l.node === ddFilter).slice(0, 10);
+  $('#ddBody').innerHTML = rows.length ? rows.map((l, i) => `
+    <tr class="border-t border-line hover:bg-white/[.02] ${flashFirst && i === 0 ? 'row-new' : ''}">
+      <td class="p-3.5 text-mute whitespace-nowrap">${esc(l.time)}</td>
+      <td class="p-3.5"><span class="px-2 py-0.5 rounded bg-card border border-line">${esc(l.node)}</span></td>
+      <td class="p-3.5 text-white">${esc(l.type)}</td>
+      <td class="p-3.5 text-off font-semibold whitespace-nowrap">${esc(l.power)}</td>
+      <td class="p-3.5 text-mute">${esc(l.dur)}</td>
+      <td class="p-3.5"><span class="inline-flex items-center gap-1.5 text-[11px] font-bold px-2 py-1 rounded-md bg-on/15 text-on border border-on/30">✔ DIBLOKIR</span></td>
+    </tr>`).join('') : `<tr><td colspan="6" class="p-6 text-center text-dim">Belum ada serangan di node ini.</td></tr>`;
+  $('#ddMonth').textContent = ddStats.month.toLocaleString('id-ID');
+  $('#ddYear').textContent = ddStats.year.toLocaleString('id-ID');
+  $('#ddMax').textContent = ddStats.max;
+}
+// Tambah serangan baru secara berkala (simulasi live)
+function ddosLiveLoop() {
+  setInterval(() => {
+    const type = pick(CONFIG.ddos.types);
+    const isRps = type === 'Bot Attack' || type === 'HTTP Flood';
+    const power = isRps ? `${randInt(12, 48) * 1000} RPS` : `${rand(1.5, 21).toFixed(1)} Gbps`;
+    ddLogs.unshift({ time: fmtWIB().full, node: pick(['SG-1', 'ID-1', 'SG-2']), type, power, dur: `${randInt(1, 9)}m ${pad(randInt(0, 59))}s` });
+    if (ddLogs.length > 40) ddLogs.pop();
+    ddStats.month++; ddStats.year++;
+    liveStats.ddos = ddStats.month; setStat('#statDdos', ddStats.month);
+    renderDdos(true);
+  }, 45000);
+}
+
+/* =============================================================
+   9. HARGA PAKET + TOGGLE
+   ============================================================= */
+let durIdx = 0;
+function renderDurToggle() {
+  $('#durToggle').innerHTML = CONFIG.durations.map((d, i) => `
+    <button data-dur="${i}" class="tab-btn text-sm px-4 py-2 rounded-xl border border-transparent text-mute ${i === durIdx ? 'active' : ''}">
+      ${esc(d.label)} ${d.disc ? `<span class="ml-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-lime2 text-bg">-${d.disc}%</span>` : ''}
+    </button>`).join('');
+  $$('[data-dur]').forEach(b => b.addEventListener('click', () => { durIdx = +b.dataset.dur; renderDurToggle(); renderPlans(); }));
+}
+function renderPlans() {
+  const d = CONFIG.durations[durIdx];
+  $('#planGrid').innerHTML = CONFIG.plans.map((p, i) => {
+    const monthly = p.price * (1 - d.disc / 100);
+    const total = monthly * d.months;
+    const pop = p.popular;
+    return `
+    <div class="relative rounded-2xl p-6 flex flex-col transition hover-lift ${pop ? 'bg-gradient-to-b from-brand/25 via-card to-card border-2 border-brand glow xl:scale-105 z-10' : 'glass'}">
+      ${pop ? `<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 flex gap-1.5 whitespace-nowrap">
+        <span class="text-[11px] font-bold px-3 py-1 rounded-full btn-grad">🔥 BEST SELLER</span>
+        <span class="text-[11px] font-bold px-3 py-1 rounded-full bg-lime2 text-bg">${p.sold} TERJUAL</span></div>` : ''}
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">${p.icon}</span>
+        <div><p class="font-head font-bold text-xl">${esc(p.id)}${pop ? ' <span class="text-xs text-brand2 font-semibold">PALING LARIS</span>' : ''}</p><p class="text-xs text-dim">${esc(p.tag)}</p></div>
+      </div>
+      <div class="mt-5">
+        ${d.disc ? `<p class="text-sm text-dim line-through">${rp(p.price)}/bln</p>` : '<p class="text-sm text-transparent select-none">-</p>'}
+        <p class="font-head font-bold text-4xl"><span class="price-num">${rp(monthly)}</span><span class="text-sm text-mute font-normal">/bln</span></p>
+        <p class="text-xs text-lime2 mt-1 h-4">${d.months > 1 ? `Total ${rp(total)} / ${d.months} bulan • Hemat ${rp(p.price * d.months - total)}` : 'Bayar bulanan, bisa stop kapan saja'}</p>
+      </div>
+      <ul class="mt-5 space-y-2.5 text-sm flex-1">
+        ${p.features.map(f => `<li class="flex gap-2.5"><span class="text-on shrink-0">✔</span><span class="text-mute">${esc(f)}</span></li>`).join('')}
+      </ul>
+      <a href="${wa(`Halo VITBRO saya mau beli paket ${p.id} ${p.ram} Rp ${p.price} lokasi Singapore`)}" data-buy="${i}" class="mt-6 inline-flex justify-center items-center gap-2 font-semibold px-5 py-3.5 rounded-xl ${pop ? 'btn-grad' : 'border border-brand/60 text-white hover:bg-brand/15'} transition">
+        🛒 Beli ${esc(p.id)} via WA
+      </a>
+    </div>`;
+  }).join('');
+  // Klik Beli -> buka modal checkout (href tetap ke WA sebagai fallback)
+  $$('[data-buy]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openCheckout(+a.dataset.buy, durIdx); }));
+}
+function renderAddons() {
+  $('#addonList').innerHTML = CONFIG.addons.map(a => `<li>+ ${rp(a.price)} ${esc(a.name)}</li>`).join('');
+}
+
+/* =============================================================
+   10. LOGS PEMBELIAN REALTIME
+   ============================================================= */
+const txState = { today: CONFIG.transactions.today, month: CONFIG.transactions.month, customers: CONFIG.transactions.customers };
+const txLogs = CONFIG.transactions.logs.map(t => ({ ...t, ts: Date.now() - t.ago * 60000 }));
+const planBadge = { STARTER: 'bg-on/15 text-on', PRO: 'bg-brand/20 text-brand2', SULTAN: 'bg-mt/15 text-mt', DEWA: 'bg-blue2/20 text-blue-300' };
+function renderTx(flash = false) {
+  $('#txBody').innerHTML = txLogs.slice(0, 10).map((t, i) => `
+    <tr class="border-t border-line hover:bg-white/[.02] ${flash && i === 0 ? 'row-new' : ''}">
+      <td class="p-3.5 font-mono text-xs text-mute whitespace-nowrap">${esc(t.id)}</td>
+      <td class="p-3.5 font-semibold">${esc(t.buyer)}</td>
+      <td class="p-3.5"><span class="text-[11px] font-bold px-2 py-1 rounded-md ${planBadge[t.plan] || ''}">${esc(t.plan)}</span></td>
+      <td class="p-3.5 whitespace-nowrap">${rp(t.price)}</td>
+      <td class="p-3.5 text-mute">${esc(t.method)}</td>
+      <td class="p-3.5"><span class="text-[11px] font-bold px-2 py-1 rounded-md bg-on/15 text-on border border-on/30">✔ BERHASIL</span></td>
+      <td class="p-3.5 text-dim whitespace-nowrap">${ago(t.ts)}</td>
+    </tr>`).join('');
+  $('#txToday').textContent = txState.today;
+  $('#txMonth').textContent = txState.month.toLocaleString('id-ID');
+  $('#txCustomers').textContent = txState.customers.toLocaleString('id-ID');
+  const items = txLogs.slice(0, 10).map(t => `<span class="px-5 inline-flex items-center gap-2"><span class="dot bg-on"></span><b>${esc(t.buyer)}</b> - ${esc(t.plan)} - ${rp(t.price)} - ${esc(t.method)} - <span class="text-on font-semibold">BERHASIL</span> - <span class="text-dim">${ago(t.ts)}</span></span>`).join('');
+  $('#txMarquee').innerHTML = items + items;
+}
+function txLiveLoop() {
+  const schedule = () => setTimeout(() => {
+    const p = pick(CONFIG.plans.concat(CONFIG.plans[0], CONFIG.plans[1], CONFIG.plans[1])); // PRO & STARTER lebih sering
+    txState.today++; txState.month++;
+    if (Math.random() > .4) { txState.customers++; liveStats.customers = Math.max(liveStats.customers, txState.customers); setStat('#statCustomers', liveStats.customers); }
+    const prefix = fmtWIB().ymd;
+    txLogs.unshift({ buyer: pick(CONFIG.transactions.buyers) + '***', plan: p.id, price: p.price, method: pick(CONFIG.transactions.methods), ts: Date.now(), id: `#VTB-${prefix}-${String(txState.today).padStart(3, '0')}` });
+    if (txLogs.length > 30) txLogs.pop();
+    renderTx(true);
+    schedule();
+  }, randInt(18000, 32000));
+  schedule();
+  setInterval(() => renderTx(false), 30000); // refresh "x menit lalu"
+}
+
+/* =============================================================
+   11. TESTIMONI
+   ============================================================= */
+function renderTesti() {
+  $('#testiGrid').innerHTML = CONFIG.testimonials.map((t, i) => `
+    <div class="fade-up glass rounded-2xl p-5 hover-lift flex flex-col" style="transition-delay:${(i % 3) * 80}ms">
+      <div class="flex items-center gap-3">
+        <span class="w-11 h-11 rounded-full btn-grad grid place-items-center font-head font-bold">${esc(t.name.charAt(0))}</span>
+        <div class="flex-1 min-w-0">
+          <p class="font-semibold truncate">${esc(t.name)}</p>
+          <p class="text-xs text-dim">${esc(t.ig)} • Paket <span class="text-brand2">${esc(t.plan)}</span> • ${esc(t.date)}</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mt-3">
+        <span class="text-mt tracking-wider">★★★★★</span>
+        <span class="text-[10px] font-bold px-2 py-1 rounded-md bg-on/15 text-on border border-on/30">✔ TRANSAKSI TERVERIFIKASI</span>
+      </div>
+      <p class="text-sm text-mute mt-3 leading-relaxed flex-1">"${esc(t.text)}"</p>
+      <div class="mt-4 rounded-xl border border-dashed border-on/40 bg-on/5 p-3 text-xs">
+        <p class="text-dim">🧾 Bukti Transfer</p>
+        <p class="mt-0.5"><span class="text-on font-semibold">${esc(t.method)} Berhasil</span> ${rp(t.price)} <span class="text-dim">- ${esc(t.date)} ${esc(t.time)}</span></p>
+      </div>
+    </div>`).join('');
+  $('#btnMoreReview').href = CONFIG.brand.discord;
+  $('#btnMoreReview').textContent = `💬 Lihat ${CONFIG.brand.reviewCount} Review Lainnya di Discord`;
+  $('#videoBox').addEventListener('click', () => window.open(CONFIG.brand.youtube, '_blank', 'noopener'));
+}
+
+/* =============================================================
+   12. CARA ORDER + CHAT
+   ============================================================= */
+function renderSteps() {
+  $('#steps').innerHTML = CONFIG.steps.map((s, i) => `
+    <div class="relative flex gap-5">
+      <div class="relative z-10 w-12 h-12 rounded-2xl btn-grad grid place-items-center text-xl shrink-0 glow">${s.icon}</div>
+      <div class="glass rounded-2xl p-4 flex-1 min-w-0 break-words [overflow-wrap:anywhere] hover-lift">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold text-brand2">STEP ${i + 1}</span>
+          <span class="text-[11px] px-2 py-0.5 rounded-full bg-lime2/15 text-lime2 border border-lime2/30">⏱ ${esc(s.time)}</span>
+        </div>
+        <p class="font-head font-bold mt-1">${esc(s.title)}</p>
+        <p class="text-sm text-mute mt-1">${esc(s.desc)}</p>
+      </div>
+    </div>`).join('');
+}
+function playChat() {
+  const box = $('#chatBox');
+  let i = 0;
+  box.innerHTML = '';
+  const next = () => {
+    if (i >= CONFIG.chat.length) { setTimeout(playChat, 6000); return; }
+    const c = CONFIG.chat[i++];
+    const mine = c.from === 'c';
+    const div = document.createElement('div');
+    div.className = `flex ${mine ? 'justify-end' : 'justify-start'} fade-up show`;
+    const inner = c.qris
+      ? `<div class="w-32 h-32 bg-white rounded-lg p-2 grid grid-cols-6 gap-0.5">${Array.from({ length: 36 }, () => `<span class="${Math.random() > .5 ? 'bg-black' : 'bg-white'}"></span>`).join('')}</div><p class="text-[11px] mt-1 text-white/70">QRIS VITBRO HOSTING</p>`
+      : esc(c.text).replace(/\n/g, '<br>');
+    div.innerHTML = `<div class="max-w-[80%] px-3 py-2 rounded-xl ${mine ? 'bg-[#005C4B] rounded-tr-sm' : 'bg-[#1F2C34] rounded-tl-sm'}">${inner}<p class="text-[10px] text-white/50 text-right mt-0.5">${c.time} ${mine ? '<span class="text-sky-400">✓✓</span>' : ''}</p></div>`;
+    box.appendChild(div);
+    setTimeout(next, 1400);
+  };
+  next();
+}
+
+/* =============================================================
+   13. FAQ ACCORDION
+   ============================================================= */
+function renderFaq() {
+  $('#faqList').innerHTML = CONFIG.faq.map((f, i) => `
+    <div class="acc-item fade-up glass rounded-2xl ${i === 0 ? 'open' : ''}">
+      <button class="acc-head w-full flex items-center justify-between gap-4 text-left p-5" aria-expanded="${i === 0}">
+        <span class="font-semibold"><span class="text-brand2 mr-2">${pad(i + 1)}.</span>${esc(f.q)}</span>
+        <span class="acc-icon w-8 h-8 rounded-full border border-line grid place-items-center shrink-0 text-lg">+</span>
+      </button>
+      <div class="acc-body">
+        <div class="px-5 pb-5 text-sm text-mute leading-relaxed">${esc(f.a)}
+          ${f.trial ? `<div class="mt-3"><a href="${wa(CONFIG.waMessages.trial)}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-lg bg-on text-white">💬 Minta Trial via WA</a></div>` : ''}
+        </div>
+      </div>
+    </div>`).join('');
+  $$('.acc-head').forEach(h => h.addEventListener('click', () => {
+    const item = h.parentElement;
+    const open = !item.classList.contains('open');
+    $$('.acc-item').forEach(x => { x.classList.remove('open'); $('.acc-head', x).setAttribute('aria-expanded', 'false'); });
+    if (open) { item.classList.add('open'); h.setAttribute('aria-expanded', 'true'); }
+  }));
+}
+
+/* =============================================================
+   BLOG
+   ============================================================= */
+function renderBlog() {
+  $('#blogAll').href = CONFIG.brand.domain + '/blog';
+  $('#blogGrid').innerHTML = CONFIG.blog.map(b => `
+    <article class="fade-up glass rounded-2xl overflow-hidden hover-lift flex flex-col">
+      <div class="h-36 bg-gradient-to-br from-brand/40 via-card to-blue2/30 grid place-items-center text-5xl relative">
+        <div class="absolute inset-0 bg-grid opacity-30"></div><span class="relative">${b.icon}</span>
+      </div>
+      <div class="p-5 flex-1 flex flex-col">
+        <div class="flex items-center gap-2 text-xs text-dim"><span class="px-2 py-0.5 rounded bg-brand/20 text-brand2">${esc(b.cat)}</span>${esc(b.date)} • ${esc(b.read)}</div>
+        <h3 class="font-head font-bold mt-3">${esc(b.title)}</h3>
+        <p class="text-sm text-mute mt-2 flex-1">${esc(b.excerpt)}</p>
+        <a href="${CONFIG.brand.domain}/blog" target="_blank" rel="noopener" class="mt-4 text-sm text-brand2 hover:underline">Baca selengkapnya →</a>
+      </div>
+    </article>`).join('');
+}
+
+/* =============================================================
+   14. COUNTDOWN PROMO
+   ============================================================= */
+function initCountdown() {
+  const end = new Date(CONFIG.promo.deadline).getTime();
+  const tick = () => {
+    let diff = Math.max(0, end - Date.now());
+    const d = Math.floor(diff / 864e5); diff -= d * 864e5;
+    const h = Math.floor(diff / 36e5); diff -= h * 36e5;
+    const m = Math.floor(diff / 6e4); diff -= m * 6e4;
+    const s = Math.floor(diff / 1e3);
+    const v = { d: pad(d), h: pad(h), m: pad(m), s: pad(s) };
+    $$('[data-cd]').forEach(el => el.textContent = v[el.dataset.cd]);
+    $('#promoCd').textContent = end > Date.now() ? `${v.d}h ${v.h}j ${v.m}m ${v.s}d` : 'Promo berakhir';
+  };
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+function initFooter() {
+  const b = CONFIG.brand;
+  $('#ftEmail').href = 'mailto:' + b.emailSupport; $('#ftEmail').textContent = '✉️ ' + b.emailSupport;
+  $('#ftBilling').href = 'mailto:' + b.emailBilling; $('#ftBilling').textContent = '🧾 ' + b.emailBilling;
+  $('#ftDiscord').href = b.discord; $('#ftDiscordCount').textContent = b.discordMembers.toLocaleString('id-ID');
+  $('#ftIg').href = b.instagram; $('#ftTt').href = b.tiktok; $('#ftYt').href = b.youtube;
+  $$('[data-cfg]').forEach(el => { if (b[el.dataset.cfg] !== undefined) el.textContent = b[el.dataset.cfg]; });
+  $$('[data-policy]').forEach(btn => btn.addEventListener('click', () => {
+    const p = CONFIG.policies[btn.dataset.policy];
+    $('#pmTitle').textContent = p.title;
+    $('#pmBody').innerHTML = p.body.map((t, i) => `<p><span class="text-brand2 font-semibold">${i + 1}.</span> ${esc(t)}</p>`).join('') +
+      `<p class="text-xs text-dim pt-3 border-t border-line">Terakhir diperbarui: 1 Nov 2026 • ${esc(b.legal)}</p>`;
+    openModal('#policyModal');
+  }));
+}
+
+/* =============================================================
+   MODAL UMUM
+   ============================================================= */
+function openModal(sel) { $(sel).classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal(el) { el.classList.remove('open'); if (!$$('.modal.open').length && $('#clientArea').classList.contains('hidden')) document.body.style.overflow = ''; }
+function initModals() {
+  $$('.modal').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) closeModal(m); });
+    $$('[data-close]', m).forEach(b => b.addEventListener('click', () => closeModal(m)));
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') $$('.modal.open').forEach(closeModal); });
+}
+
+/* =============================================================
+   POPUP PROMO (setelah 5 detik, sekali per sesi)
+   ============================================================= */
+function initPromoPopup() {
+  let shown = false;
+  try { shown = sessionStorage.getItem('vitbroPromo') === '1'; } catch (e) {}
+  if (!shown) setTimeout(() => {
+    if ($$('.modal.open').length || !$('#clientArea').classList.contains('hidden')) return;
+    openModal('#promoModal');
+    try { sessionStorage.setItem('vitbroPromo', '1'); } catch (e) {}
+  }, CONFIG.promo.popupDelayMs);
+  $('#copyCode').addEventListener('click', () => {
+    const done = () => { $('#copyCode').textContent = 'TERSALIN ✔'; setTimeout(() => $('#copyCode').textContent = CONFIG.promo.code, 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(CONFIG.promo.code).then(done).catch(done); else done();
+  });
+}
+
+/* =============================================================
+   TOAST (tiap 15 detik, rotasi data)
+   ============================================================= */
+function initToast() {
+  let i = 0, hideT;
+  const show = () => {
+    const t = CONFIG.toasts[i++ % CONFIG.toasts.length];
+    $('#toastText').innerHTML = `<b>${esc(t.name)}</b> baru saja membeli <span class="text-brand2 font-semibold">VITBRO ${esc(t.plan)}</span>`;
+    $('#toastMeta').textContent = `📍 ${t.city} • ${t.ago} • ✔ Terverifikasi`;
+    $('#toast').classList.add('show');
+    clearTimeout(hideT);
+    hideT = setTimeout(() => $('#toast').classList.remove('show'), 5500);
+  };
+  $('#toastClose').addEventListener('click', () => $('#toast').classList.remove('show'));
+  setTimeout(() => { show(); setInterval(show, CONFIG.promo.toastIntervalMs); }, 9000);
+}
+
+/* =============================================================
+   HALAMAN 2: CHECKOUT
+   ============================================================= */
+const co = { plan: 1, loc: 0, dur: 0, pay: 0, promo: false };
+function openCheckout(planIdx, dIdx = 0) {
+  co.plan = planIdx; co.dur = dIdx;
+  $('#coError').classList.add('hidden');
+  renderCheckout();
+  openModal('#checkoutModal');
+}
+function chipGroup(sel, items, activeIdx, key, labelFn) {
+  $(sel).innerHTML = items.map((x, i) => `<button type="button" data-co="${key}" data-i="${i}" class="chip-opt ${i === activeIdx ? 'active' : ''}">${labelFn(x)}</button>`).join('');
+}
+function calcCheckout() {
+  const p = CONFIG.plans[co.plan], d = CONFIG.durations[co.dur];
+  const sub = p.price * d.months;
+  const durDisc = sub * d.disc / 100;
+  const afterDur = sub - durDisc;
+  const promoDisc = co.promo ? afterDur * CONFIG.promo.percent / 100 : 0;
+  return { p, d, sub, durDisc, promoDisc, total: Math.round(afterDur - promoDisc) };
+}
+function renderCheckout() {
+  const { p, d, sub, durDisc, promoDisc, total } = calcCheckout();
+  $('#coPlanBox').innerHTML = `
+    <div class="flex items-start justify-between gap-3">
+      <div>
+        <p class="text-xs text-brand2 font-semibold">PAKET DIPILIH</p>
+        <p class="font-head font-bold text-xl mt-0.5">${p.icon} ${esc(p.id)} ${esc(p.ram)}</p>
+        <p class="text-xs text-mute mt-1">${p.features.slice(0, 4).map(esc).join(' • ')}</p>
+      </div>
+      <p class="font-head font-bold text-lg whitespace-nowrap">${rp(p.price)}<span class="text-xs text-mute font-normal">/bln</span></p>
+    </div>`;
+  chipGroup('#coPlans', CONFIG.plans, co.plan, 'plan', x => `<b>${esc(x.id)}</b><br><span class="text-dim text-[11px]">${esc(x.ram)}</span>`);
+  chipGroup('#coLocs', CONFIG.locations, co.loc, 'loc', x => `${x.flag} ${esc(x.name)}<br><span class="text-dim text-[11px]">Ping ~${x.ping}ms</span>`);
+  chipGroup('#coDurs', CONFIG.durations, co.dur, 'dur', x => `${x.months} Bulan${x.disc ? `<br><span class="text-lime2 text-[11px]">-${x.disc}%</span>` : '<br><span class="text-dim text-[11px]">Normal</span>'}`);
+  chipGroup('#coPays', CONFIG.checkoutPayments, co.pay, 'pay', x => `<b>${esc(x)}</b>`);
+  $$('[data-co]').forEach(b => b.addEventListener('click', () => { co[b.dataset.co] = +b.dataset.i; renderCheckout(); }));
+  $('#coSub').textContent = `${rp(p.price)} × ${d.months} = ${rp(sub)}`;
+  $('#coDisc').textContent = d.disc ? `- ${rp(durDisc)} (${d.disc}%)` : '-';
+  $('#coPromoDisc').textContent = co.promo ? `- ${rp(promoDisc)} (${CONFIG.promo.code})` : '-';
+  $('#coTotal').textContent = rp(total);
+}
+function normalizeWa(v) {
+  let n = v.replace(/\D/g, '');
+  if (n.startsWith('0')) n = '62' + n.slice(1);
+  if (n.startsWith('8')) n = '62' + n;
+  return /^628\d{7,12}$/.test(n) ? n : null;
+}
+function initCheckout() {
+  $('#coPromoBtn').addEventListener('click', () => {
+    const code = $('#coPromo').value.trim().toUpperCase();
+    const ok = code === CONFIG.promo.code && Date.now() < new Date(CONFIG.promo.deadline).getTime();
+    co.promo = ok;
+    $('#coPromoMsg').className = 'text-xs mt-1.5 ' + (ok ? 'text-on' : 'text-off');
+    $('#coPromoMsg').textContent = ok ? `✔ Kode ${CONFIG.promo.code} dipakai, diskon ${CONFIG.promo.percent}%` : (code ? '✖ Kode promo tidak valid atau sudah berakhir' : '');
+    renderCheckout();
+  });
+  $('#coWa').addEventListener('input', e => e.target.value = e.target.value.replace(/[^\d+]/g, ''));
+  $('#coSubmit').addEventListener('click', () => {
+    const name = $('#coName').value.trim();
+    const phone = normalizeWa($('#coWa').value);
+    const err = $('#coError');
+    if (!/^[A-Za-z0-9_]{3,16}$/.test(name)) { err.textContent = 'Nama Minecraft wajib diisi (3-16 karakter, huruf/angka/underscore).'; err.classList.remove('hidden'); return; }
+    if (!phone) { err.textContent = 'Nomor WhatsApp tidak valid. Contoh: 081234567890'; err.classList.remove('hidden'); return; }
+    err.classList.add('hidden');
+    const { p, d, total } = calcCheckout();
+    const loc = CONFIG.locations[co.loc].name;
+    const pay = CONFIG.checkoutPayments[co.pay];
+    let msg = `Halo VITBRO saya mau order Paket ${p.id} ${p.ram} Lokasi ${loc} Durasi ${d.months} Bulan Total Rp ${total} Nama MC ${name} Metode ${pay}`;
+    if (co.promo) msg += ` Kode Promo ${CONFIG.promo.code}`;
+    msg += ` No WA ${phone}`;
+    window.open(wa(msg), '_blank', 'noopener');
+  });
+}
+
+/* =============================================================
+   CEK TRANSAKSI
+   ============================================================= */
+function initCekTx() {
+  $('#btnCekTx').addEventListener('click', () => { $('#cekErr').classList.add('hidden'); openModal('#cekModal'); });
+  $('#cekSubmit').addEventListener('click', () => {
+    const phone = normalizeWa($('#cekWa').value);
+    if (!phone) { $('#cekErr').classList.remove('hidden'); return; }
+    const id = $('#cekId').value.trim();
+    window.open(wa(`Halo VITBRO saya mau cek transaksi saya. Nomor WA: ${phone}${id ? ` ID Transaksi: ${id}` : ''}`), '_blank', 'noopener');
+  });
+}
+
+/* =============================================================
+   HALAMAN 3: CLIENT AREA SIMULASI
+   ============================================================= */
+const caTitles = { dashboard: 'Dashboard', servers: 'Server Saya', billing: 'Billing', tickets: 'Support Ticket' };
+function serverCard(s) {
+  const on = s.status === 'ONLINE';
+  return `
+    <div class="glass rounded-2xl p-5">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p class="font-head font-bold text-lg">🖥️ ${esc(s.name)}</p>
+          <p class="text-xs text-dim">${esc(s.plan)} • ${esc(s.version)} • Node ${esc(s.node)}</p>
+        </div>
+        <span class="text-xs px-2.5 py-1 rounded-full border flex items-center gap-1.5 ${on ? 'bg-on/15 text-on border-on/30' : 'bg-off/15 text-off border-off/30'}"><span class="dot ${on ? 'bg-on' : 'bg-off'}"></span>${esc(s.status)}</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4 text-sm">
+        <div class="bg-bg rounded-xl border border-line p-3"><p class="text-[11px] text-dim">Node</p><p class="font-semibold">${esc(s.node)}</p></div>
+        <div class="bg-bg rounded-xl border border-line p-3"><p class="text-[11px] text-dim">Player</p><p class="font-semibold">${esc(s.players)}</p></div>
+        <div class="bg-bg rounded-xl border border-line p-3"><p class="text-[11px] text-dim">Expire</p><p class="font-semibold">${esc(s.expire)}</p></div>
+        <div class="bg-bg rounded-xl border border-line p-3"><p class="text-[11px] text-dim">Alamat</p><p class="font-semibold font-mono text-xs truncate">${esc(s.ip)}</p></div>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4">
+        <a href="${CONFIG.brand.panel}" target="_blank" rel="noopener" class="text-sm px-4 py-2 rounded-lg border border-line hover:border-brand2">Kelola di Panel ↗</a>
+        <a href="${wa(`Halo VITBRO saya mau perpanjang server ${s.name} (${s.plan}) node ${s.node} yang expire ${s.expire}`)}" target="_blank" rel="noopener" class="text-sm font-semibold px-4 py-2 rounded-lg bg-on hover:brightness-110">🔄 Perpanjang via WA</a>
+      </div>
+    </div>`;
+}
+function renderClient(tab) {
+  const c = CONFIG.client;
+  $('#caTitle').textContent = caTitles[tab];
+  $$('#caNav [data-ca]').forEach(b => b.classList.toggle('active', b.dataset.ca === tab));
+  let html = '';
+  if (tab === 'dashboard') {
+    const unpaid = c.invoices.filter(i => i.status !== 'LUNAS').length;
+    html = `
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="glass rounded-2xl p-4"><p class="text-xs text-dim">Server Aktif</p><p class="font-head font-bold text-2xl">${c.servers.length}</p></div>
+        <div class="glass rounded-2xl p-4"><p class="text-xs text-dim">Invoice Belum Bayar</p><p class="font-head font-bold text-2xl text-mt">${unpaid}</p></div>
+        <div class="glass rounded-2xl p-4"><p class="text-xs text-dim">Ticket Terbuka</p><p class="font-head font-bold text-2xl">${c.tickets.filter(t => t.status !== 'Selesai').length}</p></div>
+        <div class="glass rounded-2xl p-4"><p class="text-xs text-dim">Saldo Kredit</p><p class="font-head font-bold text-2xl">Rp 0</p></div>
+      </div>
+      <h3 class="font-head font-bold text-lg mt-6 mb-3">Server Saya</h3>
+      <div class="grid xl:grid-cols-2 gap-4">${c.servers.map(serverCard).join('')}</div>
+      ${unpaid ? `<div class="mt-6 rounded-2xl border border-mt/30 bg-mt/10 p-4 text-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3"><span>⚠️ Kamu punya ${unpaid} invoice yang menunggu pembayaran.</span><button data-ca-go="billing" class="px-4 py-2 rounded-lg bg-mt text-bg font-semibold">Lihat Billing</button></div>` : ''}`;
+  } else if (tab === 'servers') {
+    html = `<div class="grid gap-4">${c.servers.map(serverCard).join('')}</div>
+      <a href="${wa(CONFIG.waMessages.nav)}" target="_blank" rel="noopener" class="mt-4 inline-flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-xl btn-grad">+ Order Server Baru</a>`;
+  } else if (tab === 'billing') {
+    html = `
+      <div class="overflow-x-auto rounded-2xl border border-line">
+        <table class="w-full min-w-[640px] text-sm">
+          <thead class="bg-card text-xs text-mute uppercase"><tr><th class="text-left p-3.5">Invoice</th><th class="text-left p-3.5">Deskripsi</th><th class="text-left p-3.5">Jatuh Tempo</th><th class="text-left p-3.5">Jumlah</th><th class="text-left p-3.5">Status</th><th class="p-3.5"></th></tr></thead>
+          <tbody>${c.invoices.map(inv => {
+            const paid = inv.status === 'LUNAS';
+            return `<tr class="border-t border-line">
+              <td class="p-3.5 font-mono">${esc(inv.id)}</td>
+              <td class="p-3.5 text-mute">${esc(inv.desc)}</td>
+              <td class="p-3.5 text-mute">${esc(inv.date)}</td>
+              <td class="p-3.5 font-semibold">${rp(inv.amount)}</td>
+              <td class="p-3.5"><span class="text-[11px] font-bold px-2 py-1 rounded-md border ${paid ? 'bg-on/15 text-on border-on/30' : 'bg-mt/15 text-mt border-mt/30'}">${esc(inv.status)}</span></td>
+              <td class="p-3.5 text-right">${paid ? '<span class="text-xs text-dim">✔ Dibayar</span>' : `<a href="${wa(`Halo VITBRO saya mau bayar invoice ${inv.id} sebesar Rp ${inv.amount}`)}" target="_blank" rel="noopener" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-on">Bayar via WA</a>`}</td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+      <p class="text-xs text-dim mt-3">Pertanyaan billing: ${esc(CONFIG.brand.emailBilling)}</p>`;
+  } else if (tab === 'tickets') {
+    html = `
+      <div class="flex justify-end mb-3"><a href="${wa(CONFIG.waMessages.ticket)}" target="_blank" rel="noopener" class="text-sm font-semibold px-4 py-2.5 rounded-xl btn-grad">+ Buat Ticket Baru</a></div>
+      <div class="space-y-3">${c.tickets.map(t => `
+        <div class="glass rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <p class="font-semibold"><span class="font-mono text-brand2">Ticket ${esc(t.id)}</span> - ${esc(t.subject)}</p>
+            <p class="text-xs text-dim mt-0.5">Departemen ${esc(t.dept)} • Update terakhir ${esc(t.last)}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-[11px] font-bold px-2 py-1 rounded-md border ${t.status === 'Selesai' ? 'bg-white/5 text-mute border-line' : 'bg-on/15 text-on border-on/30'}">${esc(t.status)}</span>
+            <a href="${wa(`Halo VITBRO saya mau follow up ticket ${t.id} (${t.subject})`)}" target="_blank" rel="noopener" class="text-xs px-3 py-1.5 rounded-lg border border-line hover:border-brand2">Balas via WA</a>
+          </div>
+        </div>`).join('')}
+      </div>
+      <div class="mt-4 glass rounded-2xl p-4 text-sm">
+        <p class="text-xs text-dim mb-2">Balasan terakhir Ticket #123 • 3 menit lalu</p>
+        <div class="flex gap-3"><span class="w-9 h-9 rounded-full btn-grad grid place-items-center font-bold shrink-0">V</span>
+        <p class="text-mute">Halo kak Andi, error plugin terjadi karena versi EssentialsX belum mendukung 1.21.1. Sudah kami update ke versi terbaru dan server sudah di-restart. Silakan dicek ya 🙏</p></div>
+      </div>`;
+  }
+  $('#caContent').innerHTML = html;
+  $$('[data-ca-go]').forEach(b => b.addEventListener('click', () => renderClient(b.dataset.caGo)));
+}
+function initClientArea() {
+  $$('[data-open-client]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    $('#mobileMenu').classList.add('hidden');
+    $('#clientArea').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    renderClient('dashboard');
+  }));
+  $$('#caNav [data-ca]').forEach(b => b.addEventListener('click', () => renderClient(b.dataset.ca)));
+  $('#caClose').addEventListener('click', () => { $('#clientArea').classList.add('hidden'); document.body.style.overflow = ''; });
+}
+
+/* =============================================================
+   FADE-UP + COUNT-UP (IntersectionObserver)
+   ============================================================= */
+function initObservers() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
+  $$('.fade-up').forEach(el => io.observe(el));
+
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); } });
+  }, { threshold: .5 });
+  $$('[data-count]').forEach(el => cio.observe(el));
+}
+
+/* =============================================================
+   INIT
+   ============================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+  renderTopMarquee();
+  initNavbar();
+  renderHeroPayments();
+  bootConsole().then(consoleLiveLoop);
+  heroStatsLoop();
+  initPowerButtons();
+  renderPartners();
+  trustLiveLoop();
+  initCalculator();
+  renderComparison();
+  renderNodes();
+  nodesLiveLoop();
+  renderUptime90();
+  renderFeatures();
+  renderDdosFilter();
+  renderDdos();
+  ddosLiveLoop();
+  renderDurToggle();
+  renderPlans();
+  renderAddons();
+  renderTx();
+  txLiveLoop();
+  renderTesti();
+  renderSteps();
+  playChat();
+  renderFaq();
+  renderBlog();
+  initCountdown();
+  initFooter();
+  initModals();
+  initCheckout();
+  initCekTx();
+  initClientArea();
+  initPromoPopup();
+  initToast();
+  initWaLinks();
+  initObservers();
+});
+</script>
+</body>
+</html>
